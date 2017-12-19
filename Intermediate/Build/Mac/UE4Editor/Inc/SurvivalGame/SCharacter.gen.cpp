@@ -29,6 +29,7 @@ void EmptyLinkFunctionForGeneratedCodeSCharacter() {}
 	SURVIVALGAME_API UFunction* Z_Construct_UFunction_ASCharacter_ServerSetIsJumping();
 	SURVIVALGAME_API UFunction* Z_Construct_UFunction_ASCharacter_ServerSetSprinting();
 	SURVIVALGAME_API UFunction* Z_Construct_UFunction_ASCharacter_ServerSetTargeting();
+	SURVIVALGAME_API UFunction* Z_Construct_UFunction_ASCharacter_ServerUse();
 	SURVIVALGAME_API UClass* Z_Construct_UClass_ASCharacter_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_ACharacter();
 	UPackage* Z_Construct_UPackage__Script_SurvivalGame();
@@ -56,6 +57,11 @@ void EmptyLinkFunctionForGeneratedCodeSCharacter() {}
 		Parms.NewTargeting=NewTargeting ? true : false;
 		ProcessEvent(FindFunctionChecked(NAME_ASCharacter_ServerSetTargeting),&Parms);
 	}
+	static FName NAME_ASCharacter_ServerUse = FName(TEXT("ServerUse"));
+	void ASCharacter::ServerUse()
+	{
+		ProcessEvent(FindFunctionChecked(NAME_ASCharacter_ServerUse),NULL);
+	}
 	void ASCharacter::StaticRegisterNativesASCharacter()
 	{
 		UClass* Class = ASCharacter::StaticClass();
@@ -73,6 +79,7 @@ void EmptyLinkFunctionForGeneratedCodeSCharacter() {}
 			{ "ServerSetIsJumping", (Native)&ASCharacter::execServerSetIsJumping },
 			{ "ServerSetSprinting", (Native)&ASCharacter::execServerSetSprinting },
 			{ "ServerSetTargeting", (Native)&ASCharacter::execServerSetTargeting },
+			{ "ServerUse", (Native)&ASCharacter::execServerUse },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, AnsiFuncs, ARRAY_COUNT(AnsiFuncs));
 	}
@@ -357,6 +364,22 @@ void EmptyLinkFunctionForGeneratedCodeSCharacter() {}
 		}
 		return ReturnFunction;
 	}
+	UFunction* Z_Construct_UFunction_ASCharacter_ServerUse()
+	{
+		UObject* Outer = Z_Construct_UClass_ASCharacter();
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			ReturnFunction = new(EC_InternalUseOnlyConstructor, Outer, TEXT("ServerUse"), RF_Public|RF_Transient|RF_MarkAsNative) UFunction(FObjectInitializer(), nullptr, (EFunctionFlags)0x80220CC0, 65535);
+			ReturnFunction->Bind();
+			ReturnFunction->StaticLink();
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("Public/Player/SCharacter.h"));
+#endif
+		}
+		return ReturnFunction;
+	}
 	UClass* Z_Construct_UClass_ASCharacter_NoRegister()
 	{
 		return ASCharacter::StaticClass();
@@ -387,6 +410,7 @@ void EmptyLinkFunctionForGeneratedCodeSCharacter() {}
 				OuterClass->LinkChild(Z_Construct_UFunction_ASCharacter_ServerSetIsJumping());
 				OuterClass->LinkChild(Z_Construct_UFunction_ASCharacter_ServerSetSprinting());
 				OuterClass->LinkChild(Z_Construct_UFunction_ASCharacter_ServerSetTargeting());
+				OuterClass->LinkChild(Z_Construct_UFunction_ASCharacter_ServerUse());
 
 				UProperty* NewProp_MaxHunger = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("MaxHunger"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(MaxHunger, ASCharacter), 0x0010000000010001);
 				UProperty* NewProp_Hunger = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("Hunger"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(Hunger, ASCharacter), 0x0010000000010021);
@@ -417,6 +441,7 @@ void EmptyLinkFunctionForGeneratedCodeSCharacter() {}
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ASCharacter_ServerSetIsJumping(), "ServerSetIsJumping"); // 684641897
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ASCharacter_ServerSetSprinting(), "ServerSetSprinting"); // 1689812643
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ASCharacter_ServerSetTargeting(), "ServerSetTargeting"); // 1976176071
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ASCharacter_ServerUse(), "ServerUse"); // 2609732736
 				static TCppClassTypeInfo<TCppClassTypeTraits<ASCharacter> > StaticCppClassTypeInfo;
 				OuterClass->SetCppTypeInfo(&StaticCppClassTypeInfo);
 				OuterClass->StaticLink();
@@ -458,7 +483,7 @@ void EmptyLinkFunctionForGeneratedCodeSCharacter() {}
 		check(OuterClass->GetClass());
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(ASCharacter, 1446826006);
+	IMPLEMENT_CLASS(ASCharacter, 2636770532);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_ASCharacter(Z_Construct_UClass_ASCharacter, &ASCharacter::StaticClass, TEXT("/Script/SurvivalGame"), TEXT("ASCharacter"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(ASCharacter);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

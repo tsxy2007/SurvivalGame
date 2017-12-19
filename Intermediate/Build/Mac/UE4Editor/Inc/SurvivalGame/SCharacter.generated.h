@@ -17,6 +17,8 @@ struct FRotator;
 #define SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_12_RPC_WRAPPERS \
 	virtual bool ServerSetTargeting_Validate(bool ); \
 	virtual void ServerSetTargeting_Implementation(bool NewTargeting); \
+	virtual bool ServerUse_Validate(); \
+	virtual void ServerUse_Implementation(); \
 	virtual bool ServerSetSprinting_Validate(bool ); \
 	virtual void ServerSetSprinting_Implementation(bool NewSprinting); \
 	virtual bool ServerSetIsJumping_Validate(bool ); \
@@ -98,6 +100,19 @@ struct FRotator;
 			return; \
 		} \
 		this->ServerSetTargeting_Implementation(Z_Param_NewTargeting); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execServerUse) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		if (!this->ServerUse_Validate()) \
+		{ \
+			RPC_ValidateFailed(TEXT("ServerUse_Validate")); \
+			return; \
+		} \
+		this->ServerUse_Implementation(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -149,6 +164,8 @@ struct FRotator;
 #define SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_12_RPC_WRAPPERS_NO_PURE_DECLS \
 	virtual bool ServerSetTargeting_Validate(bool ); \
 	virtual void ServerSetTargeting_Implementation(bool NewTargeting); \
+	virtual bool ServerUse_Validate(); \
+	virtual void ServerUse_Implementation(); \
 	virtual bool ServerSetSprinting_Validate(bool ); \
 	virtual void ServerSetSprinting_Implementation(bool NewSprinting); \
 	virtual bool ServerSetIsJumping_Validate(bool ); \
@@ -230,6 +247,19 @@ struct FRotator;
 			return; \
 		} \
 		this->ServerSetTargeting_Implementation(Z_Param_NewTargeting); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execServerUse) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		if (!this->ServerUse_Validate()) \
+		{ \
+			RPC_ValidateFailed(TEXT("ServerUse_Validate")); \
+			return; \
+		} \
+		this->ServerUse_Implementation(); \
 		P_NATIVE_END; \
 	} \
  \

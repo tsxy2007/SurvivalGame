@@ -4,6 +4,7 @@
 #include "SCharacterMovementComponent.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "SUsableActor.h"
 #include "SurvivalGame.h"
 
 // Sets default values
@@ -56,6 +57,19 @@ void ASCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+    if (bWantsToRun && !IsSprinting())
+        SetSprinting(true);
+    
+    if (Controller)
+    {
+        ASUsableActor* Usable = GetUsableInView();
+        
+        if (Usable)
+        {
+         //   Usable->OnBeginFocus();
+        }
+    }
+    
 }
 
 // Called to bind functionality to input
@@ -63,6 +77,22 @@ void ASCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+    PlayerInputComponent->BindAxis("MoveForward",this , &ASCharacter::MoveForward);
+    PlayerInputComponent->BindAxis("MoveRight",this,&ASCharacter::MoveRight);
+    PlayerInputComponent->BindAxis("Turn",this,&APawn::AddControllerYawInput);
+    PlayerInputComponent->BindAxis("LookUp",this,&APawn::AddControllerPitchInput);
+    
+    PlayerInputComponent->BindAction("SprintHold", IE_Pressed,this,&ASCharacter::OnStartSprinting);
+    PlayerInputComponent->BindAction("SprintHold", IE_Released,this,&ASCharacter::OnStopSprinting);
+    
+    PlayerInputComponent->BindAction("Jump",IE_Pressed,this,&ASCharacter::OnJump);
+    
+    PlayerInputComponent->BindAction("CrouchToggle",IE_Pressed,this,&ASCharacter::OnCrouchToggle);
+    
+    
+    // Weapons
+    PlayerInputComponent->BindAction("Targeting",IE_Pressed,this,&ASCharacter::OnStartTargeting);
+    PlayerInputComponent->BindAction("Targeting",IE_Released,this,&ASCharacter::OnEndTargeting);
 }
 
 void ASCharacter::PostInitializeComponents()
@@ -72,38 +102,61 @@ void ASCharacter::PostInitializeComponents()
 
 void ASCharacter::MoveForward(float Val)
 {
-    
+    if (Controller && Val != 0.f)
+    {
+        const bool bLimitRotation = (GetCharacterMovement()->IsMovingOnGround() || GetCharacterMovement()->IsFalling());
+        const FRotator Rotation = bLimitRotation ? GetActorRotation() : Controller->GetControlRotation();
+        const FVector Direction = FRotationMatrix(Rotation).GetScaledAxis( EAxis::X );
+        AddMovementInput(Direction,Val);
+    }
 }
 
 void ASCharacter::MoveRight(float Val)
 {
-    
+    if ( Val != 0.f )
+    {
+        const FRotator Rotation = GetActorRotation();
+        const FVector Direction = FRotationMatrix(Rotation).GetScaledAxis(EAxis::Y);
+        AddMovementInput(Direction,Val);
+    }
 }
 
 // Client mapped to Input
 void ASCharacter::OnCrouchToggle()
 {
-    
+    if ( IsSprinting() )
+    {
+        SetSprinting(false);
+    }
+    if (CanCrouch())
+    {
+        Crouch();
+    }
+    else
+    {
+        UnCrouch();
+    }
 }
 
 void ASCharacter::OnStartTargeting()
 {
     
+    SetTargeting(true);
 }
 
 void ASCharacter::OnEndTargeting()
 {
-    
+    SetTargeting(false);
 }
 
 void ASCharacter::SetTargeting(bool NewTargeting)
 {
-    
+    bIsTargeting = NewTargeting;
 }
 
 void ASCharacter::ServerSetTargeting_Implementation(bool NewTargeting)
 {
-    
+    SetTargeting(NewTargeting);
 }
 
 bool ASCharacter::ServerSetTargeting_Validate(bool NewTargeting)
@@ -121,14 +174,59 @@ float ASCharacter::GetTargetingSpeedModifier()const
     return TargetingSpeedModifier;
 }
 
-void ASCharacter::OnStartJump()
+void ASCharacter::OnJump()
+{
+    SetIsJumping(true);
+}
+
+void ASCharacter::OnMovementModeChanged(EMovementMode PrevMovementMode, uint8 PreviousCustomMode)
+{
+    Super::OnMovementModeChanged( PrevMovementMode,  PreviousCustomMode);
+    
+    if (PrevMovementMode == EMovementMode::MOVE_Falling &&
+        GetCharacterMovement()->MovementMode != EMovementMode::MOVE_Falling)
+    {
+        SetIsJumping(false);
+    }
+}
+
+void ASCharacter::Use()
 {
     
 }
 
-void ASCharacter::OnStopJump()
+void ASCharacter::ServerUse_Implementation()
 {
+    Use();
+}
+
+bool ASCharacter::ServerUse_Validate()
+{
+    return true;
+}
+
+ASUsableActor* ASCharacter::GetUsableInView()
+{
+    FVector CamLoc;
+    FRotator CamRot;
     
+    if (Controller == nullptr)
+        return nullptr;
+    Controller->GetPlayerViewPoint( CamLoc , CamRot );
+    const FVector TraceStart = CamLoc;
+    const FVector Direction = CamRot.Vector();
+    const FVector TraceEnd = TraceStart + (Direction * 500);
+    FCollisionQueryParams TraceParams( TEXT("TraceUsableActor"),true,this );
+    TraceParams.bTraceAsyncScene = true;
+    TraceParams.bReturnPhysicalMaterial = false;
+    TraceParams.bTraceComplex = false;
+    
+    FHitResult Hit(ForceInit);
+    GetWorld()->LineTraceSingleByChannel( Hit , TraceStart, TraceEnd , ECC_Visibility ,TraceParams );
+    
+    DrawDebugLine( GetWorld() , TraceStart , TraceEnd , FColor::Red , false , 1.0f );
+    
+    return Cast<ASUsableActor>( Hit.GetActor() );
 }
 
 bool ASCharacter::IsInitiatedJump() const
@@ -138,12 +236,24 @@ bool ASCharacter::IsInitiatedJump() const
 
 void ASCharacter::SetIsJumping(bool NewJumping)
 {
+    if (bIsCrouched && NewJumping)
+    {
+        UnCrouch();
+    }
+    else if( NewJumping != bIsJumping )
+    {
+        bIsJumping = NewJumping;
+        if (bIsJumping)
+        {
+            Jump();
+        }
+    }
     
 }
 
 void ASCharacter::ServerSetIsJumping_Implementation(bool NewJumping)
 {
-    
+    SetIsJumping(NewJumping);
 }
 
 bool ASCharacter::ServerSetIsJumping_Validate(bool NewJumping)
@@ -153,22 +263,22 @@ bool ASCharacter::ServerSetIsJumping_Validate(bool NewJumping)
 
 void ASCharacter::SetSprinting(bool NewSprinting)
 {
-    
+    bWantsToRun = NewSprinting;
 }
 
 void ASCharacter::OnStartSprinting()
 {
-    
+    SetSprinting(true);
 }
 
 void ASCharacter::OnStopSprinting()
 {
-    
+    SetSprinting(false);
 }
 
 void ASCharacter::ServerSetSprinting_Implementation(bool NewSprinting)
 {
-    
+    SetSprinting(NewSprinting);
 }
 
 bool ASCharacter::ServerSetSprinting_Validate(bool NewSprinting)
@@ -178,7 +288,7 @@ bool ASCharacter::ServerSetSprinting_Validate(bool NewSprinting)
 
 bool ASCharacter::IsSprinting()const
 {
-    if (GetCharacterMovement())
+    if (!GetCharacterMovement())
     {
         return false;
     }
@@ -190,9 +300,11 @@ bool ASCharacter::IsSprinting()const
 
 FRotator ASCharacter::GetAimOffsets()const
 {
-    FRotator AimOffset ;
+    const FVector AimDirWS = GetBaseAimRotation().Vector();
+    const FVector AimDirLS = ActorToWorld().InverseTransformVectorNoScale(AimDirWS);
+    const FRotator AimRotLS = AimDirLS.Rotation();
     
-    return AimOffset;
+    return AimRotLS;
 }
 
 /*****************************/

@@ -43,10 +43,7 @@ public:
     void OnCrouchToggle();
     
     // clint mapped to input
-    void OnStartJump();
-    
-    // client mapped to input
-    void OnStopJump();
+    void OnJump();
     
     //client mapped to Input
     void OnStartSprinting();
@@ -85,17 +82,22 @@ public:
     UPROPERTY(EditDefaultsOnly,Category = "Movement")
     float SprintingSpeedModifier;
     
+    virtual void OnMovementModeChanged( EMovementMode PrevMovementMode , uint8 PreviousCustomMode = 0 ) override;
     
     /*****************************/
     /* Object Interaction        */
     /*****************************/
     
+    // Input mapped function for carray object component
+    // void OnToggleCarryActor();
+    
     // Use the usable actor currently in focus , if any
-//    virtual void Use();
+    virtual void Use();
     
-//    UFUNCTION(Server , Reliable , WithValidation)
-//    void ServerUse();
-    
+    UFUNCTION(Server , Reliable , WithValidation)
+    void ServerUse();
+
+    class ASUsableActor* GetUsableInView();
     
     /*****************************/
     /* Targeting                 */
