@@ -12,7 +12,7 @@
 UCLASS()
 class SURVIVALGAME_API ASGameMode : public AGameMode
 {
-	GENERATED_BODY()
+	GENERATED_UCLASS_BODY()
 	
 	
 	

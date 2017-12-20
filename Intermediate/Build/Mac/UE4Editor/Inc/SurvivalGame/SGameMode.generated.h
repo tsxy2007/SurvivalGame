@@ -81,7 +81,7 @@ public: \
 	SurvivalGame_Source_SurvivalGame_Public_World_SGameMode_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
 	SurvivalGame_Source_SurvivalGame_Public_World_SGameMode_h_15_INCLASS_NO_PURE_DECLS \
 	SurvivalGame_Source_SurvivalGame_Public_World_SGameMode_h_15_ENHANCED_CONSTRUCTORS \
-private: \
+static_assert(false, "Unknown access specifier for GENERATED_BODY() macro in class SGameMode."); \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 

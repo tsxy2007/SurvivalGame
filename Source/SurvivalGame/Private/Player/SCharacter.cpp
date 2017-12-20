@@ -42,6 +42,7 @@ ASCharacter::ASCharacter(const class FObjectInitializer& ObjectInitializer) : Su
     CriticalHungerThreshold = 90;
     MaxHunger = 100;
     Hunger = 0 ;
+    bHasNewFocus = true;
     
 }
 
@@ -64,10 +65,28 @@ void ASCharacter::Tick(float DeltaTime)
     {
         ASUsableActor* Usable = GetUsableInView();
         
+        if ( FocusedUsableActor != Usable)
+        {
+            if (FocusedUsableActor)
+            {
+                FocusedUsableActor->OnEndFocus();
+            }
+            bHasNewFocus = true;
+        }
+        
+        FocusedUsableActor = Usable;
+        
         if (Usable)
         {
-         //   Usable->OnBeginFocus();
+            if (bHasNewFocus)
+            {
+               Usable->OnBeginFocus();
+                bHasNewFocus = false;
+            }
+            
         }
+        
+       
     }
     
 }
@@ -224,7 +243,7 @@ ASUsableActor* ASCharacter::GetUsableInView()
     FHitResult Hit(ForceInit);
     GetWorld()->LineTraceSingleByChannel( Hit , TraceStart, TraceEnd , ECC_Visibility ,TraceParams );
     
-    DrawDebugLine( GetWorld() , TraceStart , TraceEnd , FColor::Red , false , 1.0f );
+   // DrawDebugLine( GetWorld() , TraceStart , TraceEnd , FColor::Red , false , 1.0f );
     
     return Cast<ASUsableActor>( Hit.GetActor() );
 }

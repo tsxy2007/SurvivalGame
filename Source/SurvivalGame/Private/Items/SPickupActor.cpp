@@ -23,7 +23,6 @@ void ASPickupActor::BeginPlay()
 {
     Super::BeginPlay();
     RespawnPickup();
-    OnBeginFocus();
 }
 
 void ASPickupActor::OnUsed(APawn* InstigatorPawn)

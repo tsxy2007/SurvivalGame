@@ -99,6 +99,10 @@ public:
 
     class ASUsableActor* GetUsableInView();
     
+    class ASUsableActor* FocusedUsableActor;
+    
+    bool bHasNewFocus;
+    
     /*****************************/
     /* Targeting                 */
     /*****************************/

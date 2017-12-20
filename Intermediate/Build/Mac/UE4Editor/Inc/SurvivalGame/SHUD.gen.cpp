@@ -49,6 +49,7 @@ void EmptyLinkFunctionForGeneratedCodeSHUD() {}
 				MetaData->SetValue(OuterClass, TEXT("HideCategories"), TEXT("Rendering Actor Input Replication"));
 				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("UI/SHUD.h"));
 				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("Public/UI/SHUD.h"));
+				MetaData->SetValue(OuterClass, TEXT("ObjectInitializerConstructorDeclared"), TEXT(""));
 				MetaData->SetValue(OuterClass, TEXT("ShowCategories"), TEXT("Input|MouseInput Input|TouchInput"));
 #endif
 			}
@@ -56,7 +57,7 @@ void EmptyLinkFunctionForGeneratedCodeSHUD() {}
 		check(OuterClass->GetClass());
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(ASHUD, 2794321871);
+	IMPLEMENT_CLASS(ASHUD, 3009684042);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_ASHUD(Z_Construct_UClass_ASHUD, &ASHUD::StaticClass, TEXT("/Script/SurvivalGame"), TEXT("ASHUD"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(ASHUD);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
