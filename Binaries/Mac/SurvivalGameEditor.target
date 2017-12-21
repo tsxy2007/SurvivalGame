@@ -17,11 +17,11 @@
 	"BuildProducts" :
 	[
 		{
-			"Path" : "$(ProjectDir)/Binaries/Mac/UE4Editor-SurvivalGame-3573.dylib",
+			"Path" : "$(ProjectDir)/Binaries/Mac/UE4Editor-SurvivalGame-6546.dylib",
 			"Type" : "DynamicLibrary"
 		},
 		{
-			"Path" : "$(ProjectDir)/Binaries/Mac/UE4Editor-SurvivalGame-3573.dSYM",
+			"Path" : "$(ProjectDir)/Binaries/Mac/UE4Editor-SurvivalGame-6546.dSYM",
 			"Type" : "SymbolFile"
 		},
 		{

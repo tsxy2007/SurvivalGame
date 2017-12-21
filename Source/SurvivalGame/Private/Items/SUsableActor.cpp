@@ -14,7 +14,7 @@ ASUsableActor::ASUsableActor(const class FObjectInitializer& ObjectInitializer)
 
 void ASUsableActor::OnUsed(APawn* InstigatorPawn)
 {
-    
+    GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Use Actor"));
 }
 
 void ASUsableActor::OnBeginFocus()

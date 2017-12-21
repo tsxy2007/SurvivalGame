@@ -173,6 +173,7 @@ public:
     UPROPERTY(EditDefaultsOnly,Category = "PlayCondition" )
     float MaxHunger;
     
+    
     /************************************************************************/
     /* Damage, Hit & Death                                                  */
     /************************************************************************/

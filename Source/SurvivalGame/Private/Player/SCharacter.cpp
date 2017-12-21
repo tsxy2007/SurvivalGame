@@ -50,6 +50,12 @@ ASCharacter::ASCharacter(const class FObjectInitializer& ObjectInitializer) : Su
 void ASCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+    
+    if (Role == ROLE_Authority)
+    {
+        FTimerHandle Handle;
+        GetWorldTimerManager().SetTimer(Handle,this,&ASCharacter::IncrementHunger,IncrementHungerInterval,true);
+    }
 	
 }
 
@@ -112,6 +118,9 @@ void ASCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
     // Weapons
     PlayerInputComponent->BindAction("Targeting",IE_Pressed,this,&ASCharacter::OnStartTargeting);
     PlayerInputComponent->BindAction("Targeting",IE_Released,this,&ASCharacter::OnEndTargeting);
+    
+    // Interaction
+    PlayerInputComponent->BindAction("Use",IE_Pressed,this,&ASCharacter::Use);
 }
 
 void ASCharacter::PostInitializeComponents()
@@ -159,7 +168,6 @@ void ASCharacter::OnCrouchToggle()
 
 void ASCharacter::OnStartTargeting()
 {
-    
     SetTargeting(true);
 }
 
@@ -171,6 +179,10 @@ void ASCharacter::OnEndTargeting()
 void ASCharacter::SetTargeting(bool NewTargeting)
 {
     bIsTargeting = NewTargeting;
+    if (Role < ROLE_Authority)
+    {
+        ServerSetTargeting(NewTargeting);
+    }
 }
 
 void ASCharacter::ServerSetTargeting_Implementation(bool NewTargeting)
@@ -211,7 +223,18 @@ void ASCharacter::OnMovementModeChanged(EMovementMode PrevMovementMode, uint8 Pr
 
 void ASCharacter::Use()
 {
-    
+    if (Role == ROLE_Authority)
+    {
+        ASUsableActor* Usable = GetUsableInView();
+        if (Usable)
+        {
+            Usable->OnUsed(this);
+        }
+    }
+    else
+    {
+        ServerUse();
+    }
 }
 
 void ASCharacter::ServerUse_Implementation()
@@ -283,6 +306,11 @@ bool ASCharacter::ServerSetIsJumping_Validate(bool NewJumping)
 void ASCharacter::SetSprinting(bool NewSprinting)
 {
     bWantsToRun = NewSprinting;
+    
+    if (Role < ROLE_Authority)
+    {
+        ServerSetSprinting(NewSprinting);
+    }
 }
 
 void ASCharacter::OnStartSprinting()
@@ -362,7 +390,7 @@ bool ASCharacter::IsAlive()const
 // Increments hunger , used by trimer
 void ASCharacter::IncrementHunger()
 {
-    
+    Hunger = FMath::Clamp(Hunger + IncrementHungerAmount,0.0f,GetMaxHunger());
 }
 
 

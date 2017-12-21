@@ -2,9 +2,11 @@
 /Users/fengkai/Unreal Projects/SurvivalGame/Source/SurvivalGame/Public/Items/SConsumableActor.h
 /Users/fengkai/Unreal Projects/SurvivalGame/Source/SurvivalGame/Public/Items/SPickupActor.h
 /Users/fengkai/Unreal Projects/SurvivalGame/Source/SurvivalGame/Public/Items/SUsableActor.h
+/Users/fengkai/Unreal Projects/SurvivalGame/Source/SurvivalGame/Public/Items/SWeaponPickup.h
 /Users/fengkai/Unreal Projects/SurvivalGame/Source/SurvivalGame/Public/Player/SCharacter.h
 /Users/fengkai/Unreal Projects/SurvivalGame/Source/SurvivalGame/Public/Player/SPlayerCameraManager.h
 /Users/fengkai/Unreal Projects/SurvivalGame/Source/SurvivalGame/Public/Player/SPlayerController.h
 /Users/fengkai/Unreal Projects/SurvivalGame/Source/SurvivalGame/Public/UI/SHUD.h
+/Users/fengkai/Unreal Projects/SurvivalGame/Source/SurvivalGame/Public/Weapons/SWeapon.h
 /Users/fengkai/Unreal Projects/SurvivalGame/Source/SurvivalGame/Public/World/SGameMode.h
 /Users/fengkai/Unreal Projects/SurvivalGame/Source/SurvivalGame/SurvivalGameGameModeBase.h

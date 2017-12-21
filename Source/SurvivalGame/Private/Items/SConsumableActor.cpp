@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "SConsumableActor.h"
-
+#include "SCharacter.h"
 
 
 
@@ -17,4 +17,10 @@ ASConsumableActor::ASConsumableActor(const FObjectInitializer& ObjectInitializer
 void ASConsumableActor::OnUsed(APawn* InstigatorPawn)
 {
     Super::OnUsed(InstigatorPawn);
+    ASCharacter* Pawn = Cast<ASCharacter>(InstigatorPawn);
+    
+    if (Pawn)
+    {
+        
+    }
 }
