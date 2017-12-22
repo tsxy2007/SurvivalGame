@@ -18,6 +18,8 @@ void EmptyLinkFunctionForGeneratedCodeSWeaponPickup() {}
 	SURVIVALGAME_API UClass* Z_Construct_UClass_ASWeaponPickup();
 	SURVIVALGAME_API UClass* Z_Construct_UClass_ASPickupActor();
 	UPackage* Z_Construct_UPackage__Script_SurvivalGame();
+	SURVIVALGAME_API UClass* Z_Construct_UClass_ASWeapon_NoRegister();
+	COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
 // End Cross Module References
 	void ASWeaponPickup::StaticRegisterNativesASWeaponPickup()
 	{
@@ -40,6 +42,7 @@ void EmptyLinkFunctionForGeneratedCodeSWeaponPickup() {}
 				OuterClass->ClassFlags |= (EClassFlags)0x20900080u;
 
 
+				UProperty* NewProp_WeaponClass = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("WeaponClass"), RF_Public|RF_Transient|RF_MarkAsNative) UClassProperty(CPP_PROPERTY_BASE(WeaponClass, ASWeaponPickup), 0x0014000000010001, Z_Construct_UClass_ASWeapon_NoRegister(), Z_Construct_UClass_UClass());
 				static TCppClassTypeInfo<TCppClassTypeTraits<ASWeaponPickup> > StaticCppClassTypeInfo;
 				OuterClass->SetCppTypeInfo(&StaticCppClassTypeInfo);
 				OuterClass->StaticLink();
@@ -47,13 +50,15 @@ void EmptyLinkFunctionForGeneratedCodeSWeaponPickup() {}
 				UMetaData* MetaData = OuterClass->GetOutermost()->GetMetaData();
 				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("Items/SWeaponPickup.h"));
 				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("Public/Items/SWeaponPickup.h"));
+				MetaData->SetValue(NewProp_WeaponClass, TEXT("Category"), TEXT("WeaponClass"));
+				MetaData->SetValue(NewProp_WeaponClass, TEXT("ModuleRelativePath"), TEXT("Public/Items/SWeaponPickup.h"));
 #endif
 			}
 		}
 		check(OuterClass->GetClass());
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(ASWeaponPickup, 2538780309);
+	IMPLEMENT_CLASS(ASWeaponPickup, 3317272619);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_ASWeaponPickup(Z_Construct_UClass_ASWeaponPickup, &ASWeaponPickup::StaticClass, TEXT("/Script/SurvivalGame"), TEXT("ASWeaponPickup"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(ASWeaponPickup);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

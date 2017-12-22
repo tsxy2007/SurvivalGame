@@ -6,6 +6,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "SUsableActor.h"
 #include "SurvivalGame.h"
+#include "SWeapon.h"
 
 // Sets default values
 ASCharacter::ASCharacter(const class FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer.SetDefaultSubobjectClass<USCharacterMovementComponent>(ACharacter::CharacterMovementComponentName))
@@ -44,6 +45,9 @@ ASCharacter::ASCharacter(const class FObjectInitializer& ObjectInitializer) : Su
     Hunger = 0 ;
     bHasNewFocus = true;
     
+    
+    WeaponAttachPoint = TEXT("WeaponSocket");
+    SpineAttachPoint = TEXT("SpineSocket");
 }
 
 // Called when the game starts or when spawned
@@ -121,6 +125,11 @@ void ASCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
     
     // Interaction
     PlayerInputComponent->BindAction("Use",IE_Pressed,this,&ASCharacter::Use);
+    
+    
+    //Equip
+    PlayerInputComponent->BindAction("NextWeapon",IE_Pressed , this,&ASCharacter::OnNextWeapon);
+    PlayerInputComponent->BindAction("PrevWeapon",IE_Pressed , this,&ASCharacter::OnPrevWeapon);
 }
 
 void ASCharacter::PostInitializeComponents()
@@ -425,4 +434,140 @@ void ASCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifet
     // Replicate to every client, no special condition required
     DOREPLIFETIME(ASCharacter, Health);
     DOREPLIFETIME(ASCharacter, Hunger);
+    DOREPLIFETIME(ASCharacter,CurrentWeapon);
+    DOREPLIFETIME(ASCharacter,Inventory);
+}
+
+FName ASCharacter::GetInventoryAttachPoint(EInventorySlot Slot) const
+{
+    switch (Slot)
+    {
+        case EInventorySlot::Hands:
+            return WeaponAttachPoint;
+        case EInventorySlot::Primary:
+            return SpineAttachPoint;
+        default:
+            return "";
+    }
+}
+
+void ASCharacter::SetCurrentWeapon(ASWeapon* NewWeapon , ASWeapon* LastWeapon)
+{
+    PreviousWeapon = LastWeapon;
+    ASWeapon* LocalLastWeapon = nullptr;
+    if (LastWeapon)
+    {
+        LocalLastWeapon = LastWeapon;
+    }
+    else if(NewWeapon != CurrentWeapon)
+    {
+        LocalLastWeapon = CurrentWeapon;
+    }
+    
+    bool bHasPreviousWeapon = false;
+    if (LastWeapon)
+    {
+        LocalLastWeapon->OnUnEquip();
+        bHasPreviousWeapon = true;
+    }
+    CurrentWeapon = NewWeapon;
+    if (NewWeapon)
+    {
+        NewWeapon->SetOwningPawn(this);
+        NewWeapon->OnEquip(bHasPreviousWeapon);
+    }
+}
+
+void ASCharacter::AddWeapon(ASWeapon *NewWeapon)
+{
+    if (NewWeapon && Role == ROLE_Authority)
+    {
+        NewWeapon->OnEnterInventory(this);
+        Inventory.AddUnique(NewWeapon);
+        if (Inventory.Num() > 0 && CurrentWeapon == nullptr)
+        {
+            EquipWeapon(Inventory[0]);
+        }
+    }
+}
+
+void ASCharacter::EquipWeapon(ASWeapon* Weapon)
+{
+    if (Weapon)
+    {
+        if (Weapon == CurrentWeapon)
+            return;
+        if (Role == ROLE_Authority)
+        {
+            SetCurrentWeapon(Weapon , CurrentWeapon);
+        }
+        else
+        {
+            ServerEquipWeapon(Weapon);
+        }
+    }
+}
+
+bool ASCharacter::ServerEquipWeapon_Validate(ASWeapon* Weapon)
+{
+    return true;
+}
+
+void ASCharacter::ServerEquipWeapon_Implementation(ASWeapon* Weapon)
+{
+    EquipWeapon(Weapon);
+}
+
+void ASCharacter::OnRep_CurrentWeapon(ASWeapon * LastWeapon)
+{
+    SetCurrentWeapon(CurrentWeapon, LastWeapon);
+}
+
+bool ASCharacter::WeaponSlotAvailable(EInventorySlot CheckSlot)
+{
+    for (int32 i = 0 ; i<Inventory.Num(); i++)
+    {
+        ASWeapon* Weapon = Inventory[i];
+        if (Weapon)
+        {
+            if (Weapon->GetStorageSlot() == CheckSlot )
+                return false;
+        }
+    }
+    return true;
+}
+
+void ASCharacter::OnNextWeapon()
+{
+    
+    if (Inventory.Num() >= 2)
+    {
+        const int32 CurrentWeaponIndex = Inventory.IndexOfByKey(CurrentWeapon);
+        ASWeapon* NextWeapon = Inventory[(CurrentWeaponIndex + 1 ) % Inventory.Num()];
+        EquipWeapon(NextWeapon);
+    }
+    
+}
+
+void ASCharacter::OnPrevWeapon()
+{
+    if (Inventory.Num() >= 2)
+    {
+        const int32 CurrentWeaponIndex = Inventory.IndexOfByKey(CurrentWeapon);
+        ASWeapon* PrevWeapon = Inventory[(CurrentWeaponIndex - 1 + Inventory.Num() ) % Inventory.Num()];
+        EquipWeapon(PrevWeapon);
+    }
+}
+
+void ASCharacter::SwapToNewWeaponMesh()
+{
+    if (PreviousWeapon)
+    {
+        PreviousWeapon->AttachMeshToPawn(EInventorySlot::Primary);
+    }
+    
+    if (CurrentWeapon)
+    {
+        CurrentWeapon->AttachMeshToPawn(EInventorySlot::Hands);
+    }
 }

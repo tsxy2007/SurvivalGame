@@ -6,6 +6,7 @@
 #include "Items/SPickupActor.h"
 #include "SWeaponPickup.generated.h"
 
+class ASWeapon;
 /**
  * 
  */
@@ -17,4 +18,7 @@ class SURVIVALGAME_API ASWeaponPickup : public ASPickupActor
     
 public:
     void OnUsed(APawn* InstigatorPawn) override;
+    
+    UPROPERTY(EditDefaultsOnly, Category = "WeaponClass")
+    TSubclassOf<ASWeapon> WeaponClass;
 };

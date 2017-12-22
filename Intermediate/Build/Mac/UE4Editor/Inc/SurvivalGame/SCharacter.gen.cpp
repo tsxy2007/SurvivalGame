@@ -26,16 +26,27 @@ void EmptyLinkFunctionForGeneratedCodeSCharacter() {}
 	SURVIVALGAME_API UFunction* Z_Construct_UFunction_ASCharacter_IsInitiatedJump();
 	SURVIVALGAME_API UFunction* Z_Construct_UFunction_ASCharacter_IsSprinting();
 	SURVIVALGAME_API UFunction* Z_Construct_UFunction_ASCharacter_IsTargeting();
+	SURVIVALGAME_API UFunction* Z_Construct_UFunction_ASCharacter_OnRep_CurrentWeapon();
+	SURVIVALGAME_API UClass* Z_Construct_UClass_ASWeapon_NoRegister();
+	SURVIVALGAME_API UFunction* Z_Construct_UFunction_ASCharacter_ServerEquipWeapon();
 	SURVIVALGAME_API UFunction* Z_Construct_UFunction_ASCharacter_ServerSetIsJumping();
 	SURVIVALGAME_API UFunction* Z_Construct_UFunction_ASCharacter_ServerSetSprinting();
 	SURVIVALGAME_API UFunction* Z_Construct_UFunction_ASCharacter_ServerSetTargeting();
 	SURVIVALGAME_API UFunction* Z_Construct_UFunction_ASCharacter_ServerUse();
+	SURVIVALGAME_API UFunction* Z_Construct_UFunction_ASCharacter_SwapToNewWeaponMesh();
 	SURVIVALGAME_API UClass* Z_Construct_UClass_ASCharacter_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_ACharacter();
 	UPackage* Z_Construct_UPackage__Script_SurvivalGame();
 	ENGINE_API UClass* Z_Construct_UClass_UCameraComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_USpringArmComponent_NoRegister();
 // End Cross Module References
+	static FName NAME_ASCharacter_ServerEquipWeapon = FName(TEXT("ServerEquipWeapon"));
+	void ASCharacter::ServerEquipWeapon(ASWeapon* Weapon)
+	{
+		SCharacter_eventServerEquipWeapon_Parms Parms;
+		Parms.Weapon=Weapon;
+		ProcessEvent(FindFunctionChecked(NAME_ASCharacter_ServerEquipWeapon),&Parms);
+	}
 	static FName NAME_ASCharacter_ServerSetIsJumping = FName(TEXT("ServerSetIsJumping"));
 	void ASCharacter::ServerSetIsJumping(bool NewJumping)
 	{
@@ -76,10 +87,13 @@ void EmptyLinkFunctionForGeneratedCodeSCharacter() {}
 			{ "IsInitiatedJump", (Native)&ASCharacter::execIsInitiatedJump },
 			{ "IsSprinting", (Native)&ASCharacter::execIsSprinting },
 			{ "IsTargeting", (Native)&ASCharacter::execIsTargeting },
+			{ "OnRep_CurrentWeapon", (Native)&ASCharacter::execOnRep_CurrentWeapon },
+			{ "ServerEquipWeapon", (Native)&ASCharacter::execServerEquipWeapon },
 			{ "ServerSetIsJumping", (Native)&ASCharacter::execServerSetIsJumping },
 			{ "ServerSetSprinting", (Native)&ASCharacter::execServerSetSprinting },
 			{ "ServerSetTargeting", (Native)&ASCharacter::execServerSetTargeting },
 			{ "ServerUse", (Native)&ASCharacter::execServerUse },
+			{ "SwapToNewWeaponMesh", (Native)&ASCharacter::execSwapToNewWeaponMesh },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, AnsiFuncs, ARRAY_COUNT(AnsiFuncs));
 	}
@@ -309,6 +323,44 @@ void EmptyLinkFunctionForGeneratedCodeSCharacter() {}
 		}
 		return ReturnFunction;
 	}
+	UFunction* Z_Construct_UFunction_ASCharacter_OnRep_CurrentWeapon()
+	{
+		struct SCharacter_eventOnRep_CurrentWeapon_Parms
+		{
+			ASWeapon* LastWeapon;
+		};
+		UObject* Outer = Z_Construct_UClass_ASCharacter();
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			ReturnFunction = new(EC_InternalUseOnlyConstructor, Outer, TEXT("OnRep_CurrentWeapon"), RF_Public|RF_Transient|RF_MarkAsNative) UFunction(FObjectInitializer(), nullptr, (EFunctionFlags)0x00020401, 65535, sizeof(SCharacter_eventOnRep_CurrentWeapon_Parms));
+			UProperty* NewProp_LastWeapon = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("LastWeapon"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(LastWeapon, SCharacter_eventOnRep_CurrentWeapon_Parms), 0x0010000000000080, Z_Construct_UClass_ASWeapon_NoRegister());
+			ReturnFunction->Bind();
+			ReturnFunction->StaticLink();
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("Public/Player/SCharacter.h"));
+#endif
+		}
+		return ReturnFunction;
+	}
+	UFunction* Z_Construct_UFunction_ASCharacter_ServerEquipWeapon()
+	{
+		UObject* Outer = Z_Construct_UClass_ASCharacter();
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			ReturnFunction = new(EC_InternalUseOnlyConstructor, Outer, TEXT("ServerEquipWeapon"), RF_Public|RF_Transient|RF_MarkAsNative) UFunction(FObjectInitializer(), nullptr, (EFunctionFlags)0x80220CC0, 65535, sizeof(SCharacter_eventServerEquipWeapon_Parms));
+			UProperty* NewProp_Weapon = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("Weapon"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(Weapon, SCharacter_eventServerEquipWeapon_Parms), 0x0010000000000080, Z_Construct_UClass_ASWeapon_NoRegister());
+			ReturnFunction->Bind();
+			ReturnFunction->StaticLink();
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("Public/Player/SCharacter.h"));
+#endif
+		}
+		return ReturnFunction;
+	}
 	UFunction* Z_Construct_UFunction_ASCharacter_ServerSetIsJumping()
 	{
 		UObject* Outer = Z_Construct_UClass_ASCharacter();
@@ -380,6 +432,23 @@ void EmptyLinkFunctionForGeneratedCodeSCharacter() {}
 		}
 		return ReturnFunction;
 	}
+	UFunction* Z_Construct_UFunction_ASCharacter_SwapToNewWeaponMesh()
+	{
+		UObject* Outer = Z_Construct_UClass_ASCharacter();
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			ReturnFunction = new(EC_InternalUseOnlyConstructor, Outer, TEXT("SwapToNewWeaponMesh"), RF_Public|RF_Transient|RF_MarkAsNative) UFunction(FObjectInitializer(), nullptr, (EFunctionFlags)0x04020401, 65535);
+			ReturnFunction->Bind();
+			ReturnFunction->StaticLink();
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("Animation"));
+			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("Public/Player/SCharacter.h"));
+#endif
+		}
+		return ReturnFunction;
+	}
 	UClass* Z_Construct_UClass_ASCharacter_NoRegister()
 	{
 		return ASCharacter::StaticClass();
@@ -407,11 +476,20 @@ void EmptyLinkFunctionForGeneratedCodeSCharacter() {}
 				OuterClass->LinkChild(Z_Construct_UFunction_ASCharacter_IsInitiatedJump());
 				OuterClass->LinkChild(Z_Construct_UFunction_ASCharacter_IsSprinting());
 				OuterClass->LinkChild(Z_Construct_UFunction_ASCharacter_IsTargeting());
+				OuterClass->LinkChild(Z_Construct_UFunction_ASCharacter_OnRep_CurrentWeapon());
+				OuterClass->LinkChild(Z_Construct_UFunction_ASCharacter_ServerEquipWeapon());
 				OuterClass->LinkChild(Z_Construct_UFunction_ASCharacter_ServerSetIsJumping());
 				OuterClass->LinkChild(Z_Construct_UFunction_ASCharacter_ServerSetSprinting());
 				OuterClass->LinkChild(Z_Construct_UFunction_ASCharacter_ServerSetTargeting());
 				OuterClass->LinkChild(Z_Construct_UFunction_ASCharacter_ServerUse());
+				OuterClass->LinkChild(Z_Construct_UFunction_ASCharacter_SwapToNewWeaponMesh());
 
+				UProperty* NewProp_CurrentWeapon = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("CurrentWeapon"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(CurrentWeapon, ASCharacter), 0x0010000100002020, Z_Construct_UClass_ASWeapon_NoRegister());
+				NewProp_CurrentWeapon->RepNotifyFunc = FName(TEXT("OnRep_CurrentWeapon"));
+				UProperty* NewProp_Inventory = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("Inventory"), RF_Public|RF_Transient|RF_MarkAsNative) UArrayProperty(CPP_PROPERTY_BASE(Inventory, ASCharacter), 0x0010000000002020);
+				UProperty* NewProp_Inventory_Inner = new(EC_InternalUseOnlyConstructor, NewProp_Inventory, TEXT("Inventory"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(FObjectInitializer(), EC_CppProperty, 0, 0x0000000000000000, Z_Construct_UClass_ASWeapon_NoRegister());
+				UProperty* NewProp_SpineAttachPoint = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("SpineAttachPoint"), RF_Public|RF_Transient|RF_MarkAsNative) UNameProperty(CPP_PROPERTY_BASE(SpineAttachPoint, ASCharacter), 0x0010000000010001);
+				UProperty* NewProp_WeaponAttachPoint = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("WeaponAttachPoint"), RF_Public|RF_Transient|RF_MarkAsNative) UNameProperty(CPP_PROPERTY_BASE(WeaponAttachPoint, ASCharacter), 0x0010000000010001);
 				UProperty* NewProp_MaxHunger = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("MaxHunger"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(MaxHunger, ASCharacter), 0x0010000000010001);
 				UProperty* NewProp_Hunger = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("Hunger"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(Hunger, ASCharacter), 0x0010000000010021);
 				UProperty* NewProp_Health = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("Health"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(Health, ASCharacter), 0x0010000000010021);
@@ -438,10 +516,13 @@ void EmptyLinkFunctionForGeneratedCodeSCharacter() {}
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ASCharacter_IsInitiatedJump(), "IsInitiatedJump"); // 1674023119
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ASCharacter_IsSprinting(), "IsSprinting"); // 4120500687
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ASCharacter_IsTargeting(), "IsTargeting"); // 1037682351
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ASCharacter_OnRep_CurrentWeapon(), "OnRep_CurrentWeapon"); // 2757435254
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ASCharacter_ServerEquipWeapon(), "ServerEquipWeapon"); // 1352952898
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ASCharacter_ServerSetIsJumping(), "ServerSetIsJumping"); // 684641897
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ASCharacter_ServerSetSprinting(), "ServerSetSprinting"); // 1689812643
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ASCharacter_ServerSetTargeting(), "ServerSetTargeting"); // 1976176071
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ASCharacter_ServerUse(), "ServerUse"); // 2609732736
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ASCharacter_SwapToNewWeaponMesh(), "SwapToNewWeaponMesh"); // 1216952493
 				static TCppClassTypeInfo<TCppClassTypeTraits<ASCharacter> > StaticCppClassTypeInfo;
 				OuterClass->SetCppTypeInfo(&StaticCppClassTypeInfo);
 				OuterClass->StaticLink();
@@ -450,6 +531,12 @@ void EmptyLinkFunctionForGeneratedCodeSCharacter() {}
 				MetaData->SetValue(OuterClass, TEXT("HideCategories"), TEXT("Navigation"));
 				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("Player/SCharacter.h"));
 				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("Public/Player/SCharacter.h"));
+				MetaData->SetValue(NewProp_CurrentWeapon, TEXT("ModuleRelativePath"), TEXT("Public/Player/SCharacter.h"));
+				MetaData->SetValue(NewProp_Inventory, TEXT("ModuleRelativePath"), TEXT("Public/Player/SCharacter.h"));
+				MetaData->SetValue(NewProp_SpineAttachPoint, TEXT("Category"), TEXT("Sockets"));
+				MetaData->SetValue(NewProp_SpineAttachPoint, TEXT("ModuleRelativePath"), TEXT("Public/Player/SCharacter.h"));
+				MetaData->SetValue(NewProp_WeaponAttachPoint, TEXT("Category"), TEXT("Sockets"));
+				MetaData->SetValue(NewProp_WeaponAttachPoint, TEXT("ModuleRelativePath"), TEXT("Public/Player/SCharacter.h"));
 				MetaData->SetValue(NewProp_MaxHunger, TEXT("Category"), TEXT("PlayCondition"));
 				MetaData->SetValue(NewProp_MaxHunger, TEXT("ModuleRelativePath"), TEXT("Public/Player/SCharacter.h"));
 				MetaData->SetValue(NewProp_Hunger, TEXT("Category"), TEXT("PlayCondition"));
@@ -483,7 +570,7 @@ void EmptyLinkFunctionForGeneratedCodeSCharacter() {}
 		check(OuterClass->GetClass());
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(ASCharacter, 2636770532);
+	IMPLEMENT_CLASS(ASCharacter, 1863627988);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_ASCharacter(Z_Construct_UClass_ASCharacter, &ASCharacter::StaticClass, TEXT("/Script/SurvivalGame"), TEXT("ASCharacter"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(ASCharacter);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

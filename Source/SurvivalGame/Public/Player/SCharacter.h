@@ -4,8 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "STypes.h"
 #include "SCharacter.generated.h"
 
+class ASWeapon;
 UCLASS()
 class SURVIVALGAME_API ASCharacter : public ACharacter
 {
@@ -181,4 +183,45 @@ public:
     // take Damage & handle death
     
     virtual float TakeDamage( float Damage , struct FDamageEvent const & DamageEvent , class AController* EventInstigator , class AActor* DamageCauser ) override;
+    
+    
+    
+    /************************************************************************/
+    /* Weapon & Inventory                                                   */
+    /************************************************************************/
+    UPROPERTY(EditDefaultsOnly , Category = "Sockets")
+    FName WeaponAttachPoint;
+    
+    UPROPERTY(EditDefaultsOnly , Category = "Sockets")
+    FName SpineAttachPoint;
+    
+    UPROPERTY(Transient , Replicated)
+    TArray<ASWeapon* > Inventory;
+    
+    UPROPERTY(Transient,ReplicatedUsing = OnRep_CurrentWeapon)
+    ASWeapon*       CurrentWeapon;
+    ASWeapon*       PreviousWeapon;
+    
+    UFUNCTION()
+    void OnRep_CurrentWeapon(ASWeapon * LastWeapon);
+    
+    void SetCurrentWeapon(ASWeapon* NewWeapon , ASWeapon* LastWeapon = nullptr  );
+    
+    FName GetInventoryAttachPoint(EInventorySlot Slot) const;
+    
+    bool WeaponSlotAvailable(EInventorySlot CheckSlot) ;
+    
+    void AddWeapon(ASWeapon* NewWeapon);
+    
+    void EquipWeapon(ASWeapon* Weapon);
+    
+    UFUNCTION(Reliable,Server,WithValidation)
+    void ServerEquipWeapon(ASWeapon* Weapon);
+    
+    void OnNextWeapon();
+    
+    void OnPrevWeapon();
+    
+    UFUNCTION(BlueprintCallable , Category = "Animation")
+    void SwapToNewWeaponMesh();
 };

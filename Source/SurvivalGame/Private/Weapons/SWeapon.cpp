@@ -1,14 +1,37 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "SWeapon.h"
+#include "SCharacter.h"
+#include "SurvivalGame.h"
 
 
 // Sets default values
-ASWeapon::ASWeapon()
+ASWeapon::ASWeapon(const class FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
 {
+    
+    Mesh = ObjectInitializer.CreateDefaultSubobject<USkeletalMeshComponent>(this,TEXT("WeaponMesh3P"));
+    Mesh->MeshComponentUpdateFlag = EMeshComponentUpdateFlag::OnlyTickPoseWhenRendered;
+    Mesh->bReceivesDecals = true;
+    Mesh->CastShadow = true; // 是否应该投射阴影
+    Mesh->SetCollisionObjectType(ECC_WorldDynamic);
+    Mesh->SetCollisionEnabled( ECollisionEnabled::NoCollision );
+    Mesh->SetCollisionResponseToAllChannels(ECR_Ignore);
+    Mesh->SetCollisionResponseToChannel( ECC_Visibility , ECR_Block );
+    RootComponent = Mesh;
+    
+    bIsEquipped = false;
+    
+    StorageSlot = EInventorySlot::Primary;
+    
+    SetReplicates(true);
+    bNetUseOwnerRelevancy = true;
+    
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
+    PrimaryActorTick.TickGroup = TG_PrePhysics;
+    
+    
+    NoEquipAnimDuration = 0.5f;
 }
 
 // Called when the game starts or when spawned
@@ -25,3 +48,169 @@ void ASWeapon::Tick(float DeltaTime)
 
 }
 
+void ASWeapon::PostInitializeComponents()
+{
+    Super::PostInitializeComponents();
+    
+}
+
+void ASWeapon::EndPlay(const EEndPlayReason::Type EndPlayReason)
+{
+    Super::EndPlay(EndPlayReason);
+    DetachMeshFromPawn();
+}
+
+void ASWeapon::SetOwningPawn(class ASCharacter *NewOwner)
+{
+    if (MyPawn != NewOwner)
+    {
+        MyPawn = NewOwner;
+        SetOwner( NewOwner );
+    }
+}
+
+void ASWeapon::OnRep_MyPawn()
+{
+    if (MyPawn)
+    {
+        OnEnterInventory(MyPawn);
+    }
+    else
+    {
+        
+    }
+}
+
+void ASWeapon::AttachMeshToPawn(EInventorySlot Slot)
+{
+    if (MyPawn)
+    {
+        DetachMeshFromPawn();
+        USkeletalMeshComponent* PawnMesh = MyPawn->GetMesh();
+        FName AttachPoint = MyPawn->GetInventoryAttachPoint(Slot);
+        Mesh->SetHiddenInGame(false);
+        StorageSlot = Slot;
+        Mesh->AttachToComponent( PawnMesh , FAttachmentTransformRules::SnapToTargetNotIncludingScale, AttachPoint );
+    }
+}
+
+void ASWeapon::DetachMeshFromPawn()
+{
+    Mesh->DetachFromComponent(FDetachmentTransformRules::KeepWorldTransform);
+    Mesh->SetHiddenInGame(true);
+}
+
+USkeletalMeshComponent* ASWeapon::GetWeaponMesh()const
+{
+    return Mesh;
+}
+
+class ASCharacter* ASWeapon::GetPawnOwner() const
+{
+    return MyPawn;
+}
+
+void ASWeapon::OnEquip(bool bPlayAnimation)
+{
+    bPendingEquip = true;
+    
+    if (bPlayAnimation)
+    {
+        float Duration = PlayWeaponAnimation(EquipAnim);
+        if (Duration <= 0.f)
+        {
+            Duration = NoEquipAnimDuration;
+        }
+        GetWorldTimerManager().SetTimer(EquipFinishedTimerHandle , this, &ASWeapon::OnEquipFinished , Duration , false);
+    }
+    else
+    {
+        OnEquipFinished();
+    }
+}
+
+void ASWeapon::OnEquipFinished()
+{
+    AttachMeshToPawn();
+    bIsEquipped = true;
+    bPendingEquip = false;
+    
+    if (MyPawn)
+    {
+        
+    }
+}
+
+void ASWeapon::OnUnEquip()
+{
+    bIsEquipped = false;
+    
+    if (bPendingEquip)
+    {
+        
+    }
+    
+}
+
+void ASWeapon::OnEnterInventory(ASCharacter* NewOwner)
+{
+    SetOwningPawn(NewOwner);
+    AttachMeshToPawn(EInventorySlot::Primary);
+    StorageSlot = EInventorySlot::Primary;
+}
+
+void ASWeapon::OnLeaveInventory()
+{
+    if (Role == ROLE_Authority)
+    {
+        SetOwningPawn(nullptr);
+    }
+    
+    if( IsAttachedToPawn() )
+    {
+        OnUnEquip();
+    }
+    DetachMeshFromPawn();
+}
+
+bool ASWeapon::IsEquipped()const
+{
+    return bIsEquipped;
+}
+
+bool ASWeapon::IsAttachedToPawn()const
+{
+    return IsEquipped() || bPendingEquip;
+}
+
+
+void ASWeapon::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+    Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+    
+    DOREPLIFETIME(ASWeapon, MyPawn);
+}
+
+float ASWeapon::PlayWeaponAnimation(UAnimMontage* Animation , float InPlayRate , FName StartSectionName)
+{
+    float Duration = 0.f;
+    if (MyPawn)
+    {
+        if (Animation)
+        {
+            Duration = MyPawn->PlayAnimMontage( Animation , InPlayRate , StartSectionName );
+        }
+    }
+    return Duration;
+}
+
+void ASWeapon::StopWeaponAnimation(UAnimMontage* Animation)
+{
+    if (MyPawn)
+    {
+        if (Animation)
+        {
+            MyPawn->StopAnimMontage(Animation);
+        }
+    }
+}

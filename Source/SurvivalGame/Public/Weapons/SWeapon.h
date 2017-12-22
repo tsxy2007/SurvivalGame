@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "STypes.h"
 #include "SWeapon.generated.h"
 
 UENUM()
@@ -15,28 +16,75 @@ enum class EWeaponState
     Reloading,
 };
 
-UCLASS(ABSTRACT,Blueprintable)
+UCLASS(ABSTRACT, Blueprintable)
 class SURVIVALGAME_API ASWeapon : public AActor
 {
 	GENERATED_UCLASS_BODY()
-	
-    virtual void PostInitialzeComponents() override;
+    
+    virtual void PostInitializeComponents() override;
     
     virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 
+    FTimerHandle    EquipFinishedTimerHandle;
+    
+    bool            bIsEquipped;
+    
+    bool            bPendingEquip;
+    
+    /* Time to assign on equip when no animation is found */
+    UPROPERTY(EditDefaultsOnly, Category = "Animation")
+    float NoEquipAnimDuration;
+    
 protected:
-    UPROPERTY(Transient,ReplicateUsing = OnRep_MyPawn)
+    UPROPERTY(Transient, ReplicatedUsing = OnRep_MyPawn)
     class ASCharacter* MyPawn;
     
     UPROPERTY(VisibleDefaultsOnly,Category = Mesh)
     USkeletalMeshComponent* Mesh;
+    
+    UPROPERTY(EditDefaultsOnly , Category = "Weapon")
+    TSubclassOf<class ASWeaponPickup> WeaponPickupClass;
+    
+    UPROPERTY(EditDefaultsOnly , Category = "Weapon")
+    EInventorySlot  StorageSlot;
     
     UFUNCTION()
     void OnRep_MyPawn();
     
     void DetachMeshFromPawn(); // 先把mesh从pawn删除
     
+    virtual void OnEquipFinished();
     
+    bool IsEquipped() const;
+    
+    bool IsAttachedToPawn() const;
+    
+public:
+    UFUNCTION(BlueprintCallable,Category = "Weapon")
+    class USkeletalMeshComponent* GetWeaponMesh() const;
+    
+    void OnUnEquip();
+    
+    void OnEquip(bool bPlayerAnimation);
+    
+    void SetOwningPawn(class ASCharacter* NewOwner);
+    
+    UFUNCTION(BlueprintCallable , Category = "Weapon")
+    class ASCharacter* GetPawnOwner() const;
+    
+    virtual void    OnEnterInventory(ASCharacter* NewOwner);
+    
+    virtual void    OnLeaveInventory();
+    
+    FORCEINLINE EInventorySlot GetStorageSlot()
+    {
+        return StorageSlot;
+    }
+    
+    FORCEINLINE void SetStorageSlot(EInventorySlot NewInventorySlot)
+    {
+        StorageSlot = NewInventorySlot;
+    }
     
 protected:
 	// Called when the game starts or when spawned
@@ -46,6 +94,16 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	
-	
+    void AttachMeshToPawn( EInventorySlot Slot = EInventorySlot::Hands );
+    
+    /*
+     Simulation & fx
+     */
+private:
+	UPROPERTY(EditDefaultsOnly)
+    UAnimMontage* EquipAnim;
+    
+protected:
+    float PlayWeaponAnimation(UAnimMontage* Animation , float InPlayRate = 1.f , FName StartSectionName = NAME_None);
+    void StopWeaponAnimation(UAnimMontage* Animation);
 };

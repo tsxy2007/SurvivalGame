@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DA9B53A02BD5227CE07308D1"
+               BlueprintIdentifier = "66421047B99E884F00B54A55"
                BuildableName = "SurvivalGame.app"
                BlueprintName = "SurvivalGame"
                ReferencedContainer = "container:SurvivalGame.xcodeproj">
@@ -32,7 +32,7 @@
       <MacroExpansion>
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DA9B53A02BD5227CE07308D1"
+               BlueprintIdentifier = "66421047B99E884F00B54A55"
                BuildableName = "SurvivalGame.app"
                BlueprintName = "SurvivalGame"
                ReferencedContainer = "container:SurvivalGame.xcodeproj">
@@ -55,7 +55,7 @@
          runnableDebuggingMode = "0">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DA9B53A02BD5227CE07308D1"
+               BlueprintIdentifier = "66421047B99E884F00B54A55"
                BuildableName = "SurvivalGame.app"
                BlueprintName = "SurvivalGame"
                ReferencedContainer = "container:SurvivalGame.xcodeproj">
@@ -84,7 +84,7 @@
          runnableDebuggingMode = "0">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DA9B53A02BD5227CE07308D1"
+               BlueprintIdentifier = "66421047B99E884F00B54A55"
                BuildableName = "SurvivalGame.app"
                BlueprintName = "SurvivalGame"
                ReferencedContainer = "container:SurvivalGame.xcodeproj">

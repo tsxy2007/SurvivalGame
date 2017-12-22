@@ -19,28 +19,30 @@
 		1F255AA58CDCA0FED523BDAB /* SurvivalGame.h in Sources */ = {isa = PBXBuildFile; fileRef = 32A0B5FFEACA3151481885F1 /* SurvivalGame.h */; };
 		05FB71237016BD961D240E12 /* SurvivalGameGameModeBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B07F1FC7A519201CF33A62A /* SurvivalGameGameModeBase.cpp */; };
 		887FBC5A339EC206A069A090 /* SurvivalGameGameModeBase.h in Sources */ = {isa = PBXBuildFile; fileRef = 6B7C8DBE65268E0E91A3C3E3 /* SurvivalGameGameModeBase.h */; };
-		D934D6F7868321D255469BF0 /* SCharacterMovementComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A63637F620771D2666191FD /* SCharacterMovementComponent.cpp */; };
-		C3D39CA9A59899E4BBD880FE /* SConsumableActor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7CA7F1C47CE3B24E19C6401 /* SConsumableActor.cpp */; };
-		C20EAB8931F17D77A3D934B3 /* SPickupActor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6772DBDADB63581E265B897 /* SPickupActor.cpp */; };
-		87558A97266C1C266F9BE696 /* SUsableActor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0FB3CA5B085AEE96CC35CF /* SUsableActor.cpp */; };
-		A17E772B67E21E5D551301DC /* SWeaponPickup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66E55137BC0D444B9196D09E /* SWeaponPickup.cpp */; };
-		026A26D90ACA01BB1FBAF6A8 /* SCharacter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4F1BE8C7C8840D90DD76376 /* SCharacter.cpp */; };
-		B723318888EA3E0BADD928FD /* SPlayerCameraManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BC44538B1246BCACEFA942CB /* SPlayerCameraManager.cpp */; };
-		4EB7CE0855F7912B06B022E7 /* SPlayerController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 997832357CEBFA1BC8C1D038 /* SPlayerController.cpp */; };
-		35B5C6C61AB7870DE0653AD1 /* SHUD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B36B5B647FCF60C216CF299 /* SHUD.cpp */; };
-		13872F04AF26028DE796D3A0 /* SWeapon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30CA114F291506333E611945 /* SWeapon.cpp */; };
-		3543D4CCCBC316C9C22CB292 /* SGameMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87825DBA62ACE9856314857C /* SGameMode.cpp */; };
-		EBA7E30C65BE5BB26EEACE6B /* SCharacterMovementComponent.h in Sources */ = {isa = PBXBuildFile; fileRef = 5236C1237F09DE03187EC7A6 /* SCharacterMovementComponent.h */; };
-		B74CD0917894E221BD57E024 /* SConsumableActor.h in Sources */ = {isa = PBXBuildFile; fileRef = E00A6303D100249DB4F2672C /* SConsumableActor.h */; };
-		EAC505593682646DDF3D5418 /* SPickupActor.h in Sources */ = {isa = PBXBuildFile; fileRef = EECA3AD907ACAEFA559D4375 /* SPickupActor.h */; };
-		A5DA32185929F1C5E4A4A6B2 /* SUsableActor.h in Sources */ = {isa = PBXBuildFile; fileRef = 8E89EB3BF37344A3B54A1506 /* SUsableActor.h */; };
-		C64B9608446CD64D8290B35C /* SWeaponPickup.h in Sources */ = {isa = PBXBuildFile; fileRef = 4F4C14B54B8F344924874A7E /* SWeaponPickup.h */; };
-		C17207E259A0BF5AC42C510E /* SCharacter.h in Sources */ = {isa = PBXBuildFile; fileRef = 93E98178CE592FFED58FECA7 /* SCharacter.h */; };
-		5E8E572516CCE23E001846D1 /* SPlayerCameraManager.h in Sources */ = {isa = PBXBuildFile; fileRef = 64F3F3E2D0599722FA052262 /* SPlayerCameraManager.h */; };
-		0EBB7BCB584CA832866083CA /* SPlayerController.h in Sources */ = {isa = PBXBuildFile; fileRef = 499A43F74A130E7BA2AF13DA /* SPlayerController.h */; };
-		654D2E7CF7C9AD596CF4175B /* SHUD.h in Sources */ = {isa = PBXBuildFile; fileRef = 5017E6B36F144B046F289936 /* SHUD.h */; };
-		159FD8E6F7A7C05EA8A0650A /* SWeapon.h in Sources */ = {isa = PBXBuildFile; fileRef = 1E2C3ABCB32A5E5482E8A733 /* SWeapon.h */; };
-		2D5A0B8D630F6B3CB3F86757 /* SGameMode.h in Sources */ = {isa = PBXBuildFile; fileRef = F0C661C433B8B2AFB1DB9543 /* SGameMode.h */; };
+		D934D6F7868321D255469BF0 /* STypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A63637F620771D2666191FD /* STypes.cpp */; };
+		C3D39CA9A59899E4BBD880FE /* SCharacterMovementComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7CA7F1C47CE3B24E19C6401 /* SCharacterMovementComponent.cpp */; };
+		C20EAB8931F17D77A3D934B3 /* SConsumableActor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6772DBDADB63581E265B897 /* SConsumableActor.cpp */; };
+		87558A97266C1C266F9BE696 /* SPickupActor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0FB3CA5B085AEE96CC35CF /* SPickupActor.cpp */; };
+		A17E772B67E21E5D551301DC /* SUsableActor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66E55137BC0D444B9196D09E /* SUsableActor.cpp */; };
+		026A26D90ACA01BB1FBAF6A8 /* SWeaponPickup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4F1BE8C7C8840D90DD76376 /* SWeaponPickup.cpp */; };
+		B723318888EA3E0BADD928FD /* SCharacter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BC44538B1246BCACEFA942CB /* SCharacter.cpp */; };
+		4EB7CE0855F7912B06B022E7 /* SPlayerCameraManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 997832357CEBFA1BC8C1D038 /* SPlayerCameraManager.cpp */; };
+		35B5C6C61AB7870DE0653AD1 /* SPlayerController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B36B5B647FCF60C216CF299 /* SPlayerController.cpp */; };
+		13872F04AF26028DE796D3A0 /* SHUD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30CA114F291506333E611945 /* SHUD.cpp */; };
+		3543D4CCCBC316C9C22CB292 /* SWeapon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87825DBA62ACE9856314857C /* SWeapon.cpp */; };
+		EBA7E30C65BE5BB26EEACE6B /* SGameMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5236C1237F09DE03187EC7A6 /* SGameMode.cpp */; };
+		B74CD0917894E221BD57E024 /* STypes.h in Sources */ = {isa = PBXBuildFile; fileRef = E00A6303D100249DB4F2672C /* STypes.h */; };
+		EAC505593682646DDF3D5418 /* SCharacterMovementComponent.h in Sources */ = {isa = PBXBuildFile; fileRef = EECA3AD907ACAEFA559D4375 /* SCharacterMovementComponent.h */; };
+		A5DA32185929F1C5E4A4A6B2 /* SConsumableActor.h in Sources */ = {isa = PBXBuildFile; fileRef = 8E89EB3BF37344A3B54A1506 /* SConsumableActor.h */; };
+		C64B9608446CD64D8290B35C /* SPickupActor.h in Sources */ = {isa = PBXBuildFile; fileRef = 4F4C14B54B8F344924874A7E /* SPickupActor.h */; };
+		C17207E259A0BF5AC42C510E /* SUsableActor.h in Sources */ = {isa = PBXBuildFile; fileRef = 93E98178CE592FFED58FECA7 /* SUsableActor.h */; };
+		5E8E572516CCE23E001846D1 /* SWeaponPickup.h in Sources */ = {isa = PBXBuildFile; fileRef = 64F3F3E2D0599722FA052262 /* SWeaponPickup.h */; };
+		0EBB7BCB584CA832866083CA /* SCharacter.h in Sources */ = {isa = PBXBuildFile; fileRef = 499A43F74A130E7BA2AF13DA /* SCharacter.h */; };
+		654D2E7CF7C9AD596CF4175B /* SPlayerCameraManager.h in Sources */ = {isa = PBXBuildFile; fileRef = 5017E6B36F144B046F289936 /* SPlayerCameraManager.h */; };
+		159FD8E6F7A7C05EA8A0650A /* SPlayerController.h in Sources */ = {isa = PBXBuildFile; fileRef = 1E2C3ABCB32A5E5482E8A733 /* SPlayerController.h */; };
+		2D5A0B8D630F6B3CB3F86757 /* SHUD.h in Sources */ = {isa = PBXBuildFile; fileRef = F0C661C433B8B2AFB1DB9543 /* SHUD.h */; };
+		DA8F5044CA44B32CF8A5B99C /* SWeapon.h in Sources */ = {isa = PBXBuildFile; fileRef = 9B33FB9935295726C5E3CCED /* SWeapon.h */; };
+		C89921CA36F78151C5C8B3D4 /* SGameMode.h in Sources */ = {isa = PBXBuildFile; fileRef = BE26716F443A5E4A0CC52900 /* SGameMode.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,87 +58,90 @@
 		32A0B5FFEACA3151481885F1 /* SurvivalGame.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "SurvivalGame.h"; path = "../../Source/SurvivalGame/SurvivalGame.h"; sourceTree = SOURCE_ROOT; };
 		3B07F1FC7A519201CF33A62A /* SurvivalGameGameModeBase.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; name = "SurvivalGameGameModeBase.cpp"; path = "../../Source/SurvivalGame/SurvivalGameGameModeBase.cpp"; sourceTree = SOURCE_ROOT; };
 		6B7C8DBE65268E0E91A3C3E3 /* SurvivalGameGameModeBase.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "SurvivalGameGameModeBase.h"; path = "../../Source/SurvivalGame/SurvivalGameGameModeBase.h"; sourceTree = SOURCE_ROOT; };
-		5A63637F620771D2666191FD /* SCharacterMovementComponent.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; name = "SCharacterMovementComponent.cpp"; path = "../../Source/SurvivalGame/Private/Components/SCharacterMovementComponent.cpp"; sourceTree = SOURCE_ROOT; };
-		C7CA7F1C47CE3B24E19C6401 /* SConsumableActor.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; name = "SConsumableActor.cpp"; path = "../../Source/SurvivalGame/Private/Items/SConsumableActor.cpp"; sourceTree = SOURCE_ROOT; };
-		E6772DBDADB63581E265B897 /* SPickupActor.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; name = "SPickupActor.cpp"; path = "../../Source/SurvivalGame/Private/Items/SPickupActor.cpp"; sourceTree = SOURCE_ROOT; };
-		EC0FB3CA5B085AEE96CC35CF /* SUsableActor.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; name = "SUsableActor.cpp"; path = "../../Source/SurvivalGame/Private/Items/SUsableActor.cpp"; sourceTree = SOURCE_ROOT; };
-		66E55137BC0D444B9196D09E /* SWeaponPickup.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; name = "SWeaponPickup.cpp"; path = "../../Source/SurvivalGame/Private/Items/SWeaponPickup.cpp"; sourceTree = SOURCE_ROOT; };
-		F4F1BE8C7C8840D90DD76376 /* SCharacter.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; name = "SCharacter.cpp"; path = "../../Source/SurvivalGame/Private/Player/SCharacter.cpp"; sourceTree = SOURCE_ROOT; };
-		BC44538B1246BCACEFA942CB /* SPlayerCameraManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; name = "SPlayerCameraManager.cpp"; path = "../../Source/SurvivalGame/Private/Player/SPlayerCameraManager.cpp"; sourceTree = SOURCE_ROOT; };
-		997832357CEBFA1BC8C1D038 /* SPlayerController.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; name = "SPlayerController.cpp"; path = "../../Source/SurvivalGame/Private/Player/SPlayerController.cpp"; sourceTree = SOURCE_ROOT; };
-		1B36B5B647FCF60C216CF299 /* SHUD.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; name = "SHUD.cpp"; path = "../../Source/SurvivalGame/Private/UI/SHUD.cpp"; sourceTree = SOURCE_ROOT; };
-		30CA114F291506333E611945 /* SWeapon.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; name = "SWeapon.cpp"; path = "../../Source/SurvivalGame/Private/Weapons/SWeapon.cpp"; sourceTree = SOURCE_ROOT; };
-		87825DBA62ACE9856314857C /* SGameMode.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; name = "SGameMode.cpp"; path = "../../Source/SurvivalGame/Private/World/SGameMode.cpp"; sourceTree = SOURCE_ROOT; };
-		5236C1237F09DE03187EC7A6 /* SCharacterMovementComponent.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "SCharacterMovementComponent.h"; path = "../../Source/SurvivalGame/Public/Components/SCharacterMovementComponent.h"; sourceTree = SOURCE_ROOT; };
-		E00A6303D100249DB4F2672C /* SConsumableActor.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "SConsumableActor.h"; path = "../../Source/SurvivalGame/Public/Items/SConsumableActor.h"; sourceTree = SOURCE_ROOT; };
-		EECA3AD907ACAEFA559D4375 /* SPickupActor.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "SPickupActor.h"; path = "../../Source/SurvivalGame/Public/Items/SPickupActor.h"; sourceTree = SOURCE_ROOT; };
-		8E89EB3BF37344A3B54A1506 /* SUsableActor.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "SUsableActor.h"; path = "../../Source/SurvivalGame/Public/Items/SUsableActor.h"; sourceTree = SOURCE_ROOT; };
-		4F4C14B54B8F344924874A7E /* SWeaponPickup.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "SWeaponPickup.h"; path = "../../Source/SurvivalGame/Public/Items/SWeaponPickup.h"; sourceTree = SOURCE_ROOT; };
-		93E98178CE592FFED58FECA7 /* SCharacter.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "SCharacter.h"; path = "../../Source/SurvivalGame/Public/Player/SCharacter.h"; sourceTree = SOURCE_ROOT; };
-		64F3F3E2D0599722FA052262 /* SPlayerCameraManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "SPlayerCameraManager.h"; path = "../../Source/SurvivalGame/Public/Player/SPlayerCameraManager.h"; sourceTree = SOURCE_ROOT; };
-		499A43F74A130E7BA2AF13DA /* SPlayerController.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "SPlayerController.h"; path = "../../Source/SurvivalGame/Public/Player/SPlayerController.h"; sourceTree = SOURCE_ROOT; };
-		5017E6B36F144B046F289936 /* SHUD.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "SHUD.h"; path = "../../Source/SurvivalGame/Public/UI/SHUD.h"; sourceTree = SOURCE_ROOT; };
-		1E2C3ABCB32A5E5482E8A733 /* SWeapon.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "SWeapon.h"; path = "../../Source/SurvivalGame/Public/Weapons/SWeapon.h"; sourceTree = SOURCE_ROOT; };
-		F0C661C433B8B2AFB1DB9543 /* SGameMode.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "SGameMode.h"; path = "../../Source/SurvivalGame/Public/World/SGameMode.h"; sourceTree = SOURCE_ROOT; };
-		66421047B99E884F00B54A55 /* SurvivalGame */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = SurvivalGame; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A63637F620771D2666191FD /* STypes.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; name = "STypes.cpp"; path = "../../Source/SurvivalGame/Private/STypes.cpp"; sourceTree = SOURCE_ROOT; };
+		C7CA7F1C47CE3B24E19C6401 /* SCharacterMovementComponent.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; name = "SCharacterMovementComponent.cpp"; path = "../../Source/SurvivalGame/Private/Components/SCharacterMovementComponent.cpp"; sourceTree = SOURCE_ROOT; };
+		E6772DBDADB63581E265B897 /* SConsumableActor.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; name = "SConsumableActor.cpp"; path = "../../Source/SurvivalGame/Private/Items/SConsumableActor.cpp"; sourceTree = SOURCE_ROOT; };
+		EC0FB3CA5B085AEE96CC35CF /* SPickupActor.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; name = "SPickupActor.cpp"; path = "../../Source/SurvivalGame/Private/Items/SPickupActor.cpp"; sourceTree = SOURCE_ROOT; };
+		66E55137BC0D444B9196D09E /* SUsableActor.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; name = "SUsableActor.cpp"; path = "../../Source/SurvivalGame/Private/Items/SUsableActor.cpp"; sourceTree = SOURCE_ROOT; };
+		F4F1BE8C7C8840D90DD76376 /* SWeaponPickup.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; name = "SWeaponPickup.cpp"; path = "../../Source/SurvivalGame/Private/Items/SWeaponPickup.cpp"; sourceTree = SOURCE_ROOT; };
+		BC44538B1246BCACEFA942CB /* SCharacter.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; name = "SCharacter.cpp"; path = "../../Source/SurvivalGame/Private/Player/SCharacter.cpp"; sourceTree = SOURCE_ROOT; };
+		997832357CEBFA1BC8C1D038 /* SPlayerCameraManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; name = "SPlayerCameraManager.cpp"; path = "../../Source/SurvivalGame/Private/Player/SPlayerCameraManager.cpp"; sourceTree = SOURCE_ROOT; };
+		1B36B5B647FCF60C216CF299 /* SPlayerController.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; name = "SPlayerController.cpp"; path = "../../Source/SurvivalGame/Private/Player/SPlayerController.cpp"; sourceTree = SOURCE_ROOT; };
+		30CA114F291506333E611945 /* SHUD.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; name = "SHUD.cpp"; path = "../../Source/SurvivalGame/Private/UI/SHUD.cpp"; sourceTree = SOURCE_ROOT; };
+		87825DBA62ACE9856314857C /* SWeapon.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; name = "SWeapon.cpp"; path = "../../Source/SurvivalGame/Private/Weapons/SWeapon.cpp"; sourceTree = SOURCE_ROOT; };
+		5236C1237F09DE03187EC7A6 /* SGameMode.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; name = "SGameMode.cpp"; path = "../../Source/SurvivalGame/Private/World/SGameMode.cpp"; sourceTree = SOURCE_ROOT; };
+		E00A6303D100249DB4F2672C /* STypes.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "STypes.h"; path = "../../Source/SurvivalGame/Public/STypes.h"; sourceTree = SOURCE_ROOT; };
+		EECA3AD907ACAEFA559D4375 /* SCharacterMovementComponent.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "SCharacterMovementComponent.h"; path = "../../Source/SurvivalGame/Public/Components/SCharacterMovementComponent.h"; sourceTree = SOURCE_ROOT; };
+		8E89EB3BF37344A3B54A1506 /* SConsumableActor.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "SConsumableActor.h"; path = "../../Source/SurvivalGame/Public/Items/SConsumableActor.h"; sourceTree = SOURCE_ROOT; };
+		4F4C14B54B8F344924874A7E /* SPickupActor.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "SPickupActor.h"; path = "../../Source/SurvivalGame/Public/Items/SPickupActor.h"; sourceTree = SOURCE_ROOT; };
+		93E98178CE592FFED58FECA7 /* SUsableActor.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "SUsableActor.h"; path = "../../Source/SurvivalGame/Public/Items/SUsableActor.h"; sourceTree = SOURCE_ROOT; };
+		64F3F3E2D0599722FA052262 /* SWeaponPickup.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "SWeaponPickup.h"; path = "../../Source/SurvivalGame/Public/Items/SWeaponPickup.h"; sourceTree = SOURCE_ROOT; };
+		499A43F74A130E7BA2AF13DA /* SCharacter.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "SCharacter.h"; path = "../../Source/SurvivalGame/Public/Player/SCharacter.h"; sourceTree = SOURCE_ROOT; };
+		5017E6B36F144B046F289936 /* SPlayerCameraManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "SPlayerCameraManager.h"; path = "../../Source/SurvivalGame/Public/Player/SPlayerCameraManager.h"; sourceTree = SOURCE_ROOT; };
+		1E2C3ABCB32A5E5482E8A733 /* SPlayerController.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "SPlayerController.h"; path = "../../Source/SurvivalGame/Public/Player/SPlayerController.h"; sourceTree = SOURCE_ROOT; };
+		F0C661C433B8B2AFB1DB9543 /* SHUD.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "SHUD.h"; path = "../../Source/SurvivalGame/Public/UI/SHUD.h"; sourceTree = SOURCE_ROOT; };
+		9B33FB9935295726C5E3CCED /* SWeapon.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "SWeapon.h"; path = "../../Source/SurvivalGame/Public/Weapons/SWeapon.h"; sourceTree = SOURCE_ROOT; };
+		BE26716F443A5E4A0CC52900 /* SGameMode.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "SGameMode.h"; path = "../../Source/SurvivalGame/Public/World/SGameMode.h"; sourceTree = SOURCE_ROOT; };
+		90D482141C4E09D7FB588E54 /* SurvivalGame */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = SurvivalGame; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXSourcesBuildPhase section */
-		8E1BF0F937CEF1C3AAD44F6A = {
+		FC98889B836EF194A6C938F4 = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				FB0C2F2E3795AD7DD91A4F67 /* SurvivalGame.cpp in Sources */,
 				05FB71237016BD961D240E12 /* SurvivalGameGameModeBase.cpp in Sources */,
-				D934D6F7868321D255469BF0 /* SCharacterMovementComponent.cpp in Sources */,
-				C3D39CA9A59899E4BBD880FE /* SConsumableActor.cpp in Sources */,
-				C20EAB8931F17D77A3D934B3 /* SPickupActor.cpp in Sources */,
-				87558A97266C1C266F9BE696 /* SUsableActor.cpp in Sources */,
-				A17E772B67E21E5D551301DC /* SWeaponPickup.cpp in Sources */,
-				026A26D90ACA01BB1FBAF6A8 /* SCharacter.cpp in Sources */,
-				B723318888EA3E0BADD928FD /* SPlayerCameraManager.cpp in Sources */,
-				4EB7CE0855F7912B06B022E7 /* SPlayerController.cpp in Sources */,
-				35B5C6C61AB7870DE0653AD1 /* SHUD.cpp in Sources */,
-				13872F04AF26028DE796D3A0 /* SWeapon.cpp in Sources */,
-				3543D4CCCBC316C9C22CB292 /* SGameMode.cpp in Sources */,
+				D934D6F7868321D255469BF0 /* STypes.cpp in Sources */,
+				C3D39CA9A59899E4BBD880FE /* SCharacterMovementComponent.cpp in Sources */,
+				C20EAB8931F17D77A3D934B3 /* SConsumableActor.cpp in Sources */,
+				87558A97266C1C266F9BE696 /* SPickupActor.cpp in Sources */,
+				A17E772B67E21E5D551301DC /* SUsableActor.cpp in Sources */,
+				026A26D90ACA01BB1FBAF6A8 /* SWeaponPickup.cpp in Sources */,
+				B723318888EA3E0BADD928FD /* SCharacter.cpp in Sources */,
+				4EB7CE0855F7912B06B022E7 /* SPlayerCameraManager.cpp in Sources */,
+				35B5C6C61AB7870DE0653AD1 /* SPlayerController.cpp in Sources */,
+				13872F04AF26028DE796D3A0 /* SHUD.cpp in Sources */,
+				3543D4CCCBC316C9C22CB292 /* SWeapon.cpp in Sources */,
+				EBA7E30C65BE5BB26EEACE6B /* SGameMode.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXContainerItemProxy section */
-		FBE04D40104FE480EEC4A617 /* PBXContainerItemProxy */ = {
+		BF2E758A971FA74596F8026D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 7AD1A7E605B825BE8A4350CF /* Project object */;
+			containerPortal = 8E1BF0F937CEF1C3AAD44F6A /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 3DA3BE10FDD9A7570D8F47B7;
+			remoteGlobalIDString = 7AD1A7E605B825BE8A4350CF;
 			remoteInfo = "SurvivalGame_Build";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXTargetDependency section */
-		56D6977FBDD0752F29206EA8 /* PBXTargetDependency */ = {
+		B86524B7A71AAF912F7F187A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3DA3BE10FDD9A7570D8F47B7 /* SurvivalGame_Build */;
-			targetProxy = FBE04D40104FE480EEC4A617 /* PBXContainerItemProxy */;
+			target = 7AD1A7E605B825BE8A4350CF /* SurvivalGame_Build */;
+			targetProxy = BF2E758A971FA74596F8026D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXGroup section */
-		979A75E176407F679F2110C6 = {
+		C143EC1ED4D94FE3E976535A = {
 			isa = PBXGroup;
 			children = (
-				D6F828FEE039C5B552A6EFEB /* Source */,
-				AD158A6A63A35B7DE97A98FA /* Config */,
+				57E9D0089511DB5C602D4042 /* Source */,
+				AD04EF2759BC096057A2D851 /* Config */,
 				10E4841AB4578BB4EF66F8B7 /* SurvivalGame.uproject */,
-				78C040DDD344E24C84B3B0FE /* Products */,
+				50852FD0304C1BA470D59B8F /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		D6F828FEE039C5B552A6EFEB = {
+		57E9D0089511DB5C602D4042 = {
 			isa = PBXGroup;
 			children = (
-				BD9E8BC0C52A4C33E24DBDE7 /* SurvivalGame */,
+				C64DFAFDF96778214E3B69DB /* SurvivalGame */,
 				940AC694D607EE88F16DFF10 /* SurvivalGame.Target.cs */,
 				6EF1EB4E659A8BF798C986A9 /* SurvivalGameEditor.Target.cs */,
 			);
@@ -144,11 +149,11 @@
 			path = "Source";
 			sourceTree = "<group>";
 		};
-		BD9E8BC0C52A4C33E24DBDE7 = {
+		C64DFAFDF96778214E3B69DB = {
 			isa = PBXGroup;
 			children = (
-				9111DD0E83EC8030829B5050 /* Private */,
-				1F38EEF61B74812AEC7B00A0 /* Public */,
+				5A449DD071618763D09B607E /* Private */,
+				909430E74AF212CA7F5AF88C /* Public */,
 				6B9780AA7EE4D43C61EFBDE3 /* SurvivalGame.Build.cs */,
 				248DDFD9CB3E7EA62564EF0A /* SurvivalGame.cpp */,
 				32A0B5FFEACA3151481885F1 /* SurvivalGame.h */,
@@ -159,153 +164,155 @@
 			path = "Source/SurvivalGame";
 			sourceTree = "<group>";
 		};
-		9111DD0E83EC8030829B5050 = {
+		5A449DD071618763D09B607E = {
 			isa = PBXGroup;
 			children = (
-				57E9D0089511DB5C602D4042 /* Components */,
-				AD04EF2759BC096057A2D851 /* Items */,
-				C64DFAFDF96778214E3B69DB /* Player */,
-				5A449DD071618763D09B607E /* UI */,
-				FC58D6C592F0F8B5117E4248 /* Weapons */,
-				17DD62F8B51FF3729B14CD15 /* World */,
+				FC58D6C592F0F8B5117E4248 /* Components */,
+				17DD62F8B51FF3729B14CD15 /* Items */,
+				1F38EEF61B74812AEC7B00A0 /* Player */,
+				91B28F5E42B4CADB0255B993 /* UI */,
+				FE8EAEB1A7EEE3E88BC1A659 /* Weapons */,
+				0102999DFD175B9BDDC26702 /* World */,
+				5A63637F620771D2666191FD /* STypes.cpp */,
 			);
 			name = "Private";
 			path = "Source/SurvivalGame/Private";
 			sourceTree = "<group>";
 		};
-		57E9D0089511DB5C602D4042 = {
+		FC58D6C592F0F8B5117E4248 = {
 			isa = PBXGroup;
 			children = (
-				5A63637F620771D2666191FD /* SCharacterMovementComponent.cpp */,
+				C7CA7F1C47CE3B24E19C6401 /* SCharacterMovementComponent.cpp */,
 			);
 			name = "Components";
 			path = "Source/SurvivalGame/Private/Components";
 			sourceTree = "<group>";
 		};
-		AD04EF2759BC096057A2D851 = {
+		17DD62F8B51FF3729B14CD15 = {
 			isa = PBXGroup;
 			children = (
-				C7CA7F1C47CE3B24E19C6401 /* SConsumableActor.cpp */,
-				E6772DBDADB63581E265B897 /* SPickupActor.cpp */,
-				EC0FB3CA5B085AEE96CC35CF /* SUsableActor.cpp */,
-				66E55137BC0D444B9196D09E /* SWeaponPickup.cpp */,
+				E6772DBDADB63581E265B897 /* SConsumableActor.cpp */,
+				EC0FB3CA5B085AEE96CC35CF /* SPickupActor.cpp */,
+				66E55137BC0D444B9196D09E /* SUsableActor.cpp */,
+				F4F1BE8C7C8840D90DD76376 /* SWeaponPickup.cpp */,
 			);
 			name = "Items";
 			path = "Source/SurvivalGame/Private/Items";
 			sourceTree = "<group>";
 		};
-		C64DFAFDF96778214E3B69DB = {
+		1F38EEF61B74812AEC7B00A0 = {
 			isa = PBXGroup;
 			children = (
-				F4F1BE8C7C8840D90DD76376 /* SCharacter.cpp */,
-				BC44538B1246BCACEFA942CB /* SPlayerCameraManager.cpp */,
-				997832357CEBFA1BC8C1D038 /* SPlayerController.cpp */,
+				BC44538B1246BCACEFA942CB /* SCharacter.cpp */,
+				997832357CEBFA1BC8C1D038 /* SPlayerCameraManager.cpp */,
+				1B36B5B647FCF60C216CF299 /* SPlayerController.cpp */,
 			);
 			name = "Player";
 			path = "Source/SurvivalGame/Private/Player";
 			sourceTree = "<group>";
 		};
-		5A449DD071618763D09B607E = {
+		91B28F5E42B4CADB0255B993 = {
 			isa = PBXGroup;
 			children = (
-				1B36B5B647FCF60C216CF299 /* SHUD.cpp */,
+				30CA114F291506333E611945 /* SHUD.cpp */,
 			);
 			name = "UI";
 			path = "Source/SurvivalGame/Private/UI";
 			sourceTree = "<group>";
 		};
-		FC58D6C592F0F8B5117E4248 = {
+		FE8EAEB1A7EEE3E88BC1A659 = {
 			isa = PBXGroup;
 			children = (
-				30CA114F291506333E611945 /* SWeapon.cpp */,
+				87825DBA62ACE9856314857C /* SWeapon.cpp */,
 			);
 			name = "Weapons";
 			path = "Source/SurvivalGame/Private/Weapons";
 			sourceTree = "<group>";
 		};
-		17DD62F8B51FF3729B14CD15 = {
+		0102999DFD175B9BDDC26702 = {
 			isa = PBXGroup;
 			children = (
-				87825DBA62ACE9856314857C /* SGameMode.cpp */,
+				5236C1237F09DE03187EC7A6 /* SGameMode.cpp */,
 			);
 			name = "World";
 			path = "Source/SurvivalGame/Private/World";
 			sourceTree = "<group>";
 		};
-		1F38EEF61B74812AEC7B00A0 = {
+		909430E74AF212CA7F5AF88C = {
 			isa = PBXGroup;
 			children = (
-				91B28F5E42B4CADB0255B993 /* Components */,
-				FE8EAEB1A7EEE3E88BC1A659 /* Items */,
-				0102999DFD175B9BDDC26702 /* Player */,
-				909430E74AF212CA7F5AF88C /* UI */,
-				C5CF82FE971815CF0C355C40 /* Weapons */,
-				1A2CDDEBF91DB63B27AB2112 /* World */,
+				C5CF82FE971815CF0C355C40 /* Components */,
+				1A2CDDEBF91DB63B27AB2112 /* Items */,
+				BEFB9E99AEDCD9A7090DD72E /* Player */,
+				945D03C5AC97F65A38F0CD1D /* UI */,
+				1427D061A4BC651AAE6F409C /* Weapons */,
+				797C21305BB5360C55AF579C /* World */,
+				E00A6303D100249DB4F2672C /* STypes.h */,
 			);
 			name = "Public";
 			path = "Source/SurvivalGame/Public";
 			sourceTree = "<group>";
 		};
-		91B28F5E42B4CADB0255B993 = {
+		C5CF82FE971815CF0C355C40 = {
 			isa = PBXGroup;
 			children = (
-				5236C1237F09DE03187EC7A6 /* SCharacterMovementComponent.h */,
+				EECA3AD907ACAEFA559D4375 /* SCharacterMovementComponent.h */,
 			);
 			name = "Components";
 			path = "Source/SurvivalGame/Public/Components";
 			sourceTree = "<group>";
 		};
-		FE8EAEB1A7EEE3E88BC1A659 = {
+		1A2CDDEBF91DB63B27AB2112 = {
 			isa = PBXGroup;
 			children = (
-				E00A6303D100249DB4F2672C /* SConsumableActor.h */,
-				EECA3AD907ACAEFA559D4375 /* SPickupActor.h */,
-				8E89EB3BF37344A3B54A1506 /* SUsableActor.h */,
-				4F4C14B54B8F344924874A7E /* SWeaponPickup.h */,
+				8E89EB3BF37344A3B54A1506 /* SConsumableActor.h */,
+				4F4C14B54B8F344924874A7E /* SPickupActor.h */,
+				93E98178CE592FFED58FECA7 /* SUsableActor.h */,
+				64F3F3E2D0599722FA052262 /* SWeaponPickup.h */,
 			);
 			name = "Items";
 			path = "Source/SurvivalGame/Public/Items";
 			sourceTree = "<group>";
 		};
-		0102999DFD175B9BDDC26702 = {
+		BEFB9E99AEDCD9A7090DD72E = {
 			isa = PBXGroup;
 			children = (
-				93E98178CE592FFED58FECA7 /* SCharacter.h */,
-				64F3F3E2D0599722FA052262 /* SPlayerCameraManager.h */,
-				499A43F74A130E7BA2AF13DA /* SPlayerController.h */,
+				499A43F74A130E7BA2AF13DA /* SCharacter.h */,
+				5017E6B36F144B046F289936 /* SPlayerCameraManager.h */,
+				1E2C3ABCB32A5E5482E8A733 /* SPlayerController.h */,
 			);
 			name = "Player";
 			path = "Source/SurvivalGame/Public/Player";
 			sourceTree = "<group>";
 		};
-		909430E74AF212CA7F5AF88C = {
+		945D03C5AC97F65A38F0CD1D = {
 			isa = PBXGroup;
 			children = (
-				5017E6B36F144B046F289936 /* SHUD.h */,
+				F0C661C433B8B2AFB1DB9543 /* SHUD.h */,
 			);
 			name = "UI";
 			path = "Source/SurvivalGame/Public/UI";
 			sourceTree = "<group>";
 		};
-		C5CF82FE971815CF0C355C40 = {
+		1427D061A4BC651AAE6F409C = {
 			isa = PBXGroup;
 			children = (
-				1E2C3ABCB32A5E5482E8A733 /* SWeapon.h */,
+				9B33FB9935295726C5E3CCED /* SWeapon.h */,
 			);
 			name = "Weapons";
 			path = "Source/SurvivalGame/Public/Weapons";
 			sourceTree = "<group>";
 		};
-		1A2CDDEBF91DB63B27AB2112 = {
+		797C21305BB5360C55AF579C = {
 			isa = PBXGroup;
 			children = (
-				F0C661C433B8B2AFB1DB9543 /* SGameMode.h */,
+				BE26716F443A5E4A0CC52900 /* SGameMode.h */,
 			);
 			name = "World";
 			path = "Source/SurvivalGame/Public/World";
 			sourceTree = "<group>";
 		};
-		AD158A6A63A35B7DE97A98FA = {
+		AD04EF2759BC096057A2D851 = {
 			isa = PBXGroup;
 			children = (
 				9F1A6E3CBDFC1C4D72A426E5 /* DefaultEditor.ini */,
@@ -317,10 +324,10 @@
 			path = "Config";
 			sourceTree = "<group>";
 		};
-		78C040DDD344E24C84B3B0FE /* Products */ = {
+		50852FD0304C1BA470D59B8F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				66421047B99E884F00B54A55 /* SurvivalGame */,
+				90D482141C4E09D7FB588E54 /* SurvivalGame */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -328,10 +335,10 @@
 /* End PBXGroup section */
 
 /* Begin PBXLegacyTarget section */
-		3DA3BE10FDD9A7570D8F47B7 /* SurvivalGame_Build */ = {
+		7AD1A7E605B825BE8A4350CF /* SurvivalGame_Build */ = {
 			isa = PBXLegacyTarget;
 			buildArgumentsString = "$(ACTION) $(UE_BUILD_TARGET_NAME) $(PLATFORM_NAME) $(UE_BUILD_TARGET_CONFIG) \"/Users/fengkai/Unreal Projects/SurvivalGame/SurvivalGame.uproject\"";
-			buildConfigurationList = B86524B7A71AAF912F7F187A /* Build configuration list for PBXLegacyTarget "SurvivalGame_Build" */;
+			buildConfigurationList = 631DC0EDE70121C062B726D3 /* Build configuration list for PBXLegacyTarget "SurvivalGame_Build" */;
 			buildPhases = (
 			);
 			buildToolPath = "/Users/Shared/Epic Games/UE_4.17/Engine/Build/BatchFiles/Mac/Build.sh";
@@ -345,28 +352,28 @@
 /* End PBXLegacyTarget section */
 
 /* Begin PBXNativeTarget section */
-		DA9B53A02BD5227CE07308D1 /* SurvivalGame */ = {
+		66421047B99E884F00B54A55 /* SurvivalGame */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 787C37429805A534068B9A9D /* Build configuration list for PBXNativeTarget "SurvivalGame" */;
+			buildConfigurationList = 3DA3BE10FDD9A7570D8F47B7 /* Build configuration list for PBXNativeTarget "SurvivalGame" */;
 			buildPhases = (
 			);
 			dependencies = (
-				56D6977FBDD0752F29206EA8 /* PBXTargetDependency */,
+				B86524B7A71AAF912F7F187A /* PBXTargetDependency */,
 			);
 			name = "SurvivalGame";
 			passBuildSettingsInEnvironment = 1;
 			productName = "SurvivalGame";
-			productReference = "66421047B99E884F00B54A55";
+			productReference = "90D482141C4E09D7FB588E54";
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXNativeTarget section */
-		BF2E758A971FA74596F8026D /* SurvivalGame_Index */ = {
+		979A75E176407F679F2110C6 /* SurvivalGame_Index */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 90D482141C4E09D7FB588E54 /* Build configuration list for PBXNativeTarget "SurvivalGame_Index" */;
+			buildConfigurationList = 78C040DDD344E24C84B3B0FE /* Build configuration list for PBXNativeTarget "SurvivalGame_Index" */;
 			buildPhases = (
-				8E1BF0F937CEF1C3AAD44F6A /* Sources */,
+				FC98889B836EF194A6C938F4 /* Sources */,
 			);
 			dependencies = (
 			);
@@ -378,38 +385,38 @@
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		7AD1A7E605B825BE8A4350CF /* Project object */ = {
+		8E1BF0F937CEF1C3AAD44F6A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Epic Games, Inc.";
 				TargetAttributes = {
-					DA9B53A02BD5227CE07308D1 = {
+					66421047B99E884F00B54A55 = {
 						ProvisioningStyle = Manual;
 					};
 				};
 			};
-			buildConfigurationList = 631DC0EDE70121C062B726D3 /* Build configuration list for PBXProject "SurvivalGame" */;
+			buildConfigurationList = 42434749C4E92F420DF97526 /* Build configuration list for PBXProject "SurvivalGame" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en
 			);
-			mainGroup = 979A75E176407F679F2110C6;
-			productRefGroup = 78C040DDD344E24C84B3B0FE;
+			mainGroup = C143EC1ED4D94FE3E976535A;
+			productRefGroup = 50852FD0304C1BA470D59B8F;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-			DA9B53A02BD5227CE07308D1 /* SurvivalGame */,
-			3DA3BE10FDD9A7570D8F47B7 /* SurvivalGame_Build */,
-			BF2E758A971FA74596F8026D /* SurvivalGame_Index */,
+			66421047B99E884F00B54A55 /* SurvivalGame */,
+			7AD1A7E605B825BE8A4350CF /* SurvivalGame_Build */,
+			979A75E176407F679F2110C6 /* SurvivalGame_Index */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin XCBuildConfiguration section */
-		42434749C4E92F420DF97526 /* "DebugGame" */ = {
+		E1D2EFD0846C80CBF0EDF93E /* "DebugGame" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -929,7 +936,7 @@
 			};
 			name = "DebugGame";
 		};
-		E1D2EFD0846C80CBF0EDF93E /* "DebugGame Editor" */ = {
+		5C31B6D4144B4D84B0B27FD0 /* "DebugGame Editor" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1449,7 +1456,7 @@
 			};
 			name = "DebugGame Editor";
 		};
-		5C31B6D4144B4D84B0B27FD0 /* "Development" */ = {
+		886CD62B5761B5A7CD232262 /* "Development" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1969,7 +1976,7 @@
 			};
 			name = "Development";
 		};
-		886CD62B5761B5A7CD232262 /* "Development Editor" */ = {
+		A60E945551256895437D2A67 /* "Development Editor" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2489,7 +2496,7 @@
 			};
 			name = "Development Editor";
 		};
-		A60E945551256895437D2A67 /* "Shipping" */ = {
+		D77287FD65E25433ACF18FC5 /* "Shipping" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -3009,7 +3016,7 @@
 			};
 			name = "Shipping";
 		};
-		C143EC1ED4D94FE3E976535A /* "DebugGame" */ = {
+		B95E12C0DDD1B5ECA75D213C /* "DebugGame" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				VALID_ARCHS = "x86_64 arm64 armv7 armv7s";
@@ -3035,7 +3042,7 @@
 			};
 			name = "DebugGame";
 		};
-		B95E12C0DDD1B5ECA75D213C /* "DebugGame Editor" */ = {
+		0C0546313873F17F6FB46392 /* "DebugGame Editor" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				VALID_ARCHS = "x86_64";
@@ -3050,7 +3057,7 @@
 			};
 			name = "DebugGame Editor";
 		};
-		0C0546313873F17F6FB46392 /* "Development" */ = {
+		B474C49E1576FDD2E6F32959 /* "Development" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				VALID_ARCHS = "x86_64 arm64 armv7 armv7s";
@@ -3076,7 +3083,7 @@
 			};
 			name = "Development";
 		};
-		B474C49E1576FDD2E6F32959 /* "Development Editor" */ = {
+		CFB19F145CBFA96B247262A3 /* "Development Editor" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				VALID_ARCHS = "x86_64";
@@ -3091,7 +3098,7 @@
 			};
 			name = "Development Editor";
 		};
-		CFB19F145CBFA96B247262A3 /* "Shipping" */ = {
+		D6F828FEE039C5B552A6EFEB /* "Shipping" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				VALID_ARCHS = "x86_64 arm64 armv7 armv7s";
@@ -3117,7 +3124,7 @@
 			};
 			name = "Shipping";
 		};
-		50852FD0304C1BA470D59B8F /* "DebugGame" */ = {
+		51B45F7B84BEB4864D3AEF5D /* "DebugGame" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				VALID_ARCHS = "x86_64 arm64 armv7 armv7s";
@@ -3127,7 +3134,7 @@
 			};
 			name = "DebugGame";
 		};
-		51B45F7B84BEB4864D3AEF5D /* "DebugGame Editor" */ = {
+		B2B197D8BF129D08D33A1E53 /* "DebugGame Editor" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				VALID_ARCHS = "x86_64";
@@ -3137,7 +3144,7 @@
 			};
 			name = "DebugGame Editor";
 		};
-		B2B197D8BF129D08D33A1E53 /* "Development" */ = {
+		00F0920407B9C663B9484F52 /* "Development" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				VALID_ARCHS = "x86_64 arm64 armv7 armv7s";
@@ -3147,7 +3154,7 @@
 			};
 			name = "Development";
 		};
-		00F0920407B9C663B9484F52 /* "Development Editor" */ = {
+		C68C4E6F6C459CF1A2195EF9 /* "Development Editor" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				VALID_ARCHS = "x86_64";
@@ -3157,7 +3164,7 @@
 			};
 			name = "Development Editor";
 		};
-		C68C4E6F6C459CF1A2195EF9 /* "Shipping" */ = {
+		AD158A6A63A35B7DE97A98FA /* "Shipping" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				VALID_ARCHS = "x86_64 arm64 armv7 armv7s";
@@ -3167,7 +3174,7 @@
 			};
 			name = "Shipping";
 		};
-		FC98889B836EF194A6C938F4 /* "DebugGame" */ = {
+		5D4B1F0454CF9E0F9E49E125 /* "DebugGame" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				VALID_ARCHS = "x86_64 arm64 armv7 armv7s";
@@ -3193,7 +3200,7 @@
 			};
 			name = "DebugGame";
 		};
-		5D4B1F0454CF9E0F9E49E125 /* "DebugGame Editor" */ = {
+		08DF7201ED6BACAACC4EF74E /* "DebugGame Editor" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				VALID_ARCHS = "x86_64";
@@ -3208,7 +3215,7 @@
 			};
 			name = "DebugGame Editor";
 		};
-		08DF7201ED6BACAACC4EF74E /* "Development" */ = {
+		3B72B071847786E4BC0F4D78 /* "Development" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				VALID_ARCHS = "x86_64 arm64 armv7 armv7s";
@@ -3234,7 +3241,7 @@
 			};
 			name = "Development";
 		};
-		3B72B071847786E4BC0F4D78 /* "Development Editor" */ = {
+		24711294E0BA0FBE4748A2D3 /* "Development Editor" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				VALID_ARCHS = "x86_64";
@@ -3249,7 +3256,7 @@
 			};
 			name = "Development Editor";
 		};
-		24711294E0BA0FBE4748A2D3 /* "Shipping" */ = {
+		BD9E8BC0C52A4C33E24DBDE7 /* "Shipping" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				VALID_ARCHS = "x86_64 arm64 armv7 armv7s";
@@ -3278,55 +3285,55 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		631DC0EDE70121C062B726D3 /* Build configuration list for PBXProject "SurvivalGame" */ = {
+		42434749C4E92F420DF97526 /* Build configuration list for PBXProject "SurvivalGame" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				42434749C4E92F420DF97526 /* "DebugGame" */,
-				E1D2EFD0846C80CBF0EDF93E /* "DebugGame Editor" */,
-				5C31B6D4144B4D84B0B27FD0 /* "Development" */,
-				886CD62B5761B5A7CD232262 /* "Development Editor" */,
-				A60E945551256895437D2A67 /* "Shipping" */,
+				E1D2EFD0846C80CBF0EDF93E /* "DebugGame" */,
+				5C31B6D4144B4D84B0B27FD0 /* "DebugGame Editor" */,
+				886CD62B5761B5A7CD232262 /* "Development" */,
+				A60E945551256895437D2A67 /* "Development Editor" */,
+				D77287FD65E25433ACF18FC5 /* "Shipping" */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Development;
 		};
-		B86524B7A71AAF912F7F187A /* Build configuration list for PBXLegacyTarget "SurvivalGame_Build" */ = {
+		631DC0EDE70121C062B726D3 /* Build configuration list for PBXLegacyTarget "SurvivalGame_Build" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				50852FD0304C1BA470D59B8F /* "DebugGame" */,
-				51B45F7B84BEB4864D3AEF5D /* "DebugGame Editor" */,
-				B2B197D8BF129D08D33A1E53 /* "Development" */,
-				00F0920407B9C663B9484F52 /* "Development Editor" */,
-				C68C4E6F6C459CF1A2195EF9 /* "Shipping" */,
+				51B45F7B84BEB4864D3AEF5D /* "DebugGame" */,
+				B2B197D8BF129D08D33A1E53 /* "DebugGame Editor" */,
+				00F0920407B9C663B9484F52 /* "Development" */,
+				C68C4E6F6C459CF1A2195EF9 /* "Development Editor" */,
+				AD158A6A63A35B7DE97A98FA /* "Shipping" */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Development;
 		};
-		787C37429805A534068B9A9D /* Build configuration list for PBXNativeTarget "SurvivalGame" */ = {
+		3DA3BE10FDD9A7570D8F47B7 /* Build configuration list for PBXNativeTarget "SurvivalGame" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C143EC1ED4D94FE3E976535A /* "DebugGame" */,
-				B95E12C0DDD1B5ECA75D213C /* "DebugGame Editor" */,
-				0C0546313873F17F6FB46392 /* "Development" */,
-				B474C49E1576FDD2E6F32959 /* "Development Editor" */,
-				CFB19F145CBFA96B247262A3 /* "Shipping" */,
+				B95E12C0DDD1B5ECA75D213C /* "DebugGame" */,
+				0C0546313873F17F6FB46392 /* "DebugGame Editor" */,
+				B474C49E1576FDD2E6F32959 /* "Development" */,
+				CFB19F145CBFA96B247262A3 /* "Development Editor" */,
+				D6F828FEE039C5B552A6EFEB /* "Shipping" */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Development;
 		};
-		90D482141C4E09D7FB588E54 /* Build configuration list for PBXNativeTarget "SurvivalGame_Index" */ = {
+		78C040DDD344E24C84B3B0FE /* Build configuration list for PBXNativeTarget "SurvivalGame_Index" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FC98889B836EF194A6C938F4 /* "DebugGame" */,
-				5D4B1F0454CF9E0F9E49E125 /* "DebugGame Editor" */,
-				08DF7201ED6BACAACC4EF74E /* "Development" */,
-				3B72B071847786E4BC0F4D78 /* "Development Editor" */,
-				24711294E0BA0FBE4748A2D3 /* "Shipping" */,
+				5D4B1F0454CF9E0F9E49E125 /* "DebugGame" */,
+				08DF7201ED6BACAACC4EF74E /* "DebugGame Editor" */,
+				3B72B071847786E4BC0F4D78 /* "Development" */,
+				24711294E0BA0FBE4748A2D3 /* "Development Editor" */,
+				BD9E8BC0C52A4C33E24DBDE7 /* "Shipping" */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Development;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 7AD1A7E605B825BE8A4350CF /* Project object */;
+	rootObject = 8E1BF0F937CEF1C3AAD44F6A /* Project object */;
 }

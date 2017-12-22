@@ -13,9 +13,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define SURVIVALGAME_SWeaponPickup_generated_h
 
-#define SurvivalGame_Source_SurvivalGame_Public_Items_SWeaponPickup_h_15_RPC_WRAPPERS
-#define SurvivalGame_Source_SurvivalGame_Public_Items_SWeaponPickup_h_15_RPC_WRAPPERS_NO_PURE_DECLS
-#define SurvivalGame_Source_SurvivalGame_Public_Items_SWeaponPickup_h_15_INCLASS_NO_PURE_DECLS \
+#define SurvivalGame_Source_SurvivalGame_Public_Items_SWeaponPickup_h_16_RPC_WRAPPERS
+#define SurvivalGame_Source_SurvivalGame_Public_Items_SWeaponPickup_h_16_RPC_WRAPPERS_NO_PURE_DECLS
+#define SurvivalGame_Source_SurvivalGame_Public_Items_SWeaponPickup_h_16_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesASWeaponPickup(); \
 	friend SURVIVALGAME_API class UClass* Z_Construct_UClass_ASWeaponPickup(); \
@@ -25,7 +25,7 @@ public: \
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define SurvivalGame_Source_SurvivalGame_Public_Items_SWeaponPickup_h_15_INCLASS \
+#define SurvivalGame_Source_SurvivalGame_Public_Items_SWeaponPickup_h_16_INCLASS \
 private: \
 	static void StaticRegisterNativesASWeaponPickup(); \
 	friend SURVIVALGAME_API class UClass* Z_Construct_UClass_ASWeaponPickup(); \
@@ -35,7 +35,7 @@ public: \
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define SurvivalGame_Source_SurvivalGame_Public_Items_SWeaponPickup_h_15_STANDARD_CONSTRUCTORS \
+#define SurvivalGame_Source_SurvivalGame_Public_Items_SWeaponPickup_h_16_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API ASWeaponPickup(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(ASWeaponPickup) \
@@ -48,7 +48,7 @@ private: \
 public:
 
 
-#define SurvivalGame_Source_SurvivalGame_Public_Items_SWeaponPickup_h_15_ENHANCED_CONSTRUCTORS \
+#define SurvivalGame_Source_SurvivalGame_Public_Items_SWeaponPickup_h_16_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API ASWeaponPickup(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()) : Super(ObjectInitializer) { }; \
 private: \
@@ -61,26 +61,26 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(ASWeaponPickup); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(ASWeaponPickup)
 
 
-#define SurvivalGame_Source_SurvivalGame_Public_Items_SWeaponPickup_h_15_PRIVATE_PROPERTY_OFFSET
-#define SurvivalGame_Source_SurvivalGame_Public_Items_SWeaponPickup_h_12_PROLOG
-#define SurvivalGame_Source_SurvivalGame_Public_Items_SWeaponPickup_h_15_GENERATED_BODY_LEGACY \
+#define SurvivalGame_Source_SurvivalGame_Public_Items_SWeaponPickup_h_16_PRIVATE_PROPERTY_OFFSET
+#define SurvivalGame_Source_SurvivalGame_Public_Items_SWeaponPickup_h_13_PROLOG
+#define SurvivalGame_Source_SurvivalGame_Public_Items_SWeaponPickup_h_16_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	SurvivalGame_Source_SurvivalGame_Public_Items_SWeaponPickup_h_15_PRIVATE_PROPERTY_OFFSET \
-	SurvivalGame_Source_SurvivalGame_Public_Items_SWeaponPickup_h_15_RPC_WRAPPERS \
-	SurvivalGame_Source_SurvivalGame_Public_Items_SWeaponPickup_h_15_INCLASS \
-	SurvivalGame_Source_SurvivalGame_Public_Items_SWeaponPickup_h_15_STANDARD_CONSTRUCTORS \
+	SurvivalGame_Source_SurvivalGame_Public_Items_SWeaponPickup_h_16_PRIVATE_PROPERTY_OFFSET \
+	SurvivalGame_Source_SurvivalGame_Public_Items_SWeaponPickup_h_16_RPC_WRAPPERS \
+	SurvivalGame_Source_SurvivalGame_Public_Items_SWeaponPickup_h_16_INCLASS \
+	SurvivalGame_Source_SurvivalGame_Public_Items_SWeaponPickup_h_16_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define SurvivalGame_Source_SurvivalGame_Public_Items_SWeaponPickup_h_15_GENERATED_BODY \
+#define SurvivalGame_Source_SurvivalGame_Public_Items_SWeaponPickup_h_16_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	SurvivalGame_Source_SurvivalGame_Public_Items_SWeaponPickup_h_15_PRIVATE_PROPERTY_OFFSET \
-	SurvivalGame_Source_SurvivalGame_Public_Items_SWeaponPickup_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
-	SurvivalGame_Source_SurvivalGame_Public_Items_SWeaponPickup_h_15_INCLASS_NO_PURE_DECLS \
-	SurvivalGame_Source_SurvivalGame_Public_Items_SWeaponPickup_h_15_ENHANCED_CONSTRUCTORS \
+	SurvivalGame_Source_SurvivalGame_Public_Items_SWeaponPickup_h_16_PRIVATE_PROPERTY_OFFSET \
+	SurvivalGame_Source_SurvivalGame_Public_Items_SWeaponPickup_h_16_RPC_WRAPPERS_NO_PURE_DECLS \
+	SurvivalGame_Source_SurvivalGame_Public_Items_SWeaponPickup_h_16_INCLASS_NO_PURE_DECLS \
+	SurvivalGame_Source_SurvivalGame_Public_Items_SWeaponPickup_h_16_ENHANCED_CONSTRUCTORS \
 static_assert(false, "Unknown access specifier for GENERATED_BODY() macro in class SWeaponPickup."); \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

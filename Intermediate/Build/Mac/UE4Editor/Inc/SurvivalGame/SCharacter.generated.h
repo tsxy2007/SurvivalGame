@@ -8,13 +8,16 @@
 #include "ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+class ASWeapon;
 struct FRotator;
 #ifdef SURVIVALGAME_SCharacter_generated_h
 #error "SCharacter.generated.h already included, missing '#pragma once' in SCharacter.h"
 #endif
 #define SURVIVALGAME_SCharacter_generated_h
 
-#define SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_12_RPC_WRAPPERS \
+#define SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_14_RPC_WRAPPERS \
+	virtual bool ServerEquipWeapon_Validate(ASWeapon* ); \
+	virtual void ServerEquipWeapon_Implementation(ASWeapon* Weapon); \
 	virtual bool ServerSetTargeting_Validate(bool ); \
 	virtual void ServerSetTargeting_Implementation(bool NewTargeting); \
 	virtual bool ServerUse_Validate(); \
@@ -23,6 +26,37 @@ struct FRotator;
 	virtual void ServerSetSprinting_Implementation(bool NewSprinting); \
 	virtual bool ServerSetIsJumping_Validate(bool ); \
 	virtual void ServerSetIsJumping_Implementation(bool NewJumping); \
+ \
+	DECLARE_FUNCTION(execSwapToNewWeaponMesh) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->SwapToNewWeaponMesh(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execServerEquipWeapon) \
+	{ \
+		P_GET_OBJECT(ASWeapon,Z_Param_Weapon); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		if (!this->ServerEquipWeapon_Validate(Z_Param_Weapon)) \
+		{ \
+			RPC_ValidateFailed(TEXT("ServerEquipWeapon_Validate")); \
+			return; \
+		} \
+		this->ServerEquipWeapon_Implementation(Z_Param_Weapon); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execOnRep_CurrentWeapon) \
+	{ \
+		P_GET_OBJECT(ASWeapon,Z_Param_LastWeapon); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->OnRep_CurrentWeapon(Z_Param_LastWeapon); \
+		P_NATIVE_END; \
+	} \
  \
 	DECLARE_FUNCTION(execIsAlive) \
 	{ \
@@ -161,7 +195,9 @@ struct FRotator;
 	}
 
 
-#define SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_12_RPC_WRAPPERS_NO_PURE_DECLS \
+#define SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
+	virtual bool ServerEquipWeapon_Validate(ASWeapon* ); \
+	virtual void ServerEquipWeapon_Implementation(ASWeapon* Weapon); \
 	virtual bool ServerSetTargeting_Validate(bool ); \
 	virtual void ServerSetTargeting_Implementation(bool NewTargeting); \
 	virtual bool ServerUse_Validate(); \
@@ -170,6 +206,37 @@ struct FRotator;
 	virtual void ServerSetSprinting_Implementation(bool NewSprinting); \
 	virtual bool ServerSetIsJumping_Validate(bool ); \
 	virtual void ServerSetIsJumping_Implementation(bool NewJumping); \
+ \
+	DECLARE_FUNCTION(execSwapToNewWeaponMesh) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->SwapToNewWeaponMesh(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execServerEquipWeapon) \
+	{ \
+		P_GET_OBJECT(ASWeapon,Z_Param_Weapon); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		if (!this->ServerEquipWeapon_Validate(Z_Param_Weapon)) \
+		{ \
+			RPC_ValidateFailed(TEXT("ServerEquipWeapon_Validate")); \
+			return; \
+		} \
+		this->ServerEquipWeapon_Implementation(Z_Param_Weapon); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execOnRep_CurrentWeapon) \
+	{ \
+		P_GET_OBJECT(ASWeapon,Z_Param_LastWeapon); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->OnRep_CurrentWeapon(Z_Param_LastWeapon); \
+		P_NATIVE_END; \
+	} \
  \
 	DECLARE_FUNCTION(execIsAlive) \
 	{ \
@@ -308,7 +375,11 @@ struct FRotator;
 	}
 
 
-#define SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_12_EVENT_PARMS \
+#define SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_14_EVENT_PARMS \
+	struct SCharacter_eventServerEquipWeapon_Parms \
+	{ \
+		ASWeapon* Weapon; \
+	}; \
 	struct SCharacter_eventServerSetIsJumping_Parms \
 	{ \
 		bool NewJumping; \
@@ -323,8 +394,8 @@ struct FRotator;
 	};
 
 
-#define SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_12_CALLBACK_WRAPPERS
-#define SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_12_INCLASS_NO_PURE_DECLS \
+#define SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_14_CALLBACK_WRAPPERS
+#define SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_14_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesASCharacter(); \
 	friend SURVIVALGAME_API class UClass* Z_Construct_UClass_ASCharacter(); \
@@ -335,7 +406,7 @@ public: \
 	void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
 
-#define SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_12_INCLASS \
+#define SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_14_INCLASS \
 private: \
 	static void StaticRegisterNativesASCharacter(); \
 	friend SURVIVALGAME_API class UClass* Z_Construct_UClass_ASCharacter(); \
@@ -346,7 +417,7 @@ public: \
 	void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
 
-#define SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_12_STANDARD_CONSTRUCTORS \
+#define SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_14_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API ASCharacter(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(ASCharacter) \
@@ -359,7 +430,7 @@ private: \
 public:
 
 
-#define SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_12_ENHANCED_CONSTRUCTORS \
+#define SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_14_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API ASCharacter(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()) : Super(ObjectInitializer) { }; \
 private: \
@@ -372,35 +443,35 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(ASCharacter); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(ASCharacter)
 
 
-#define SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_12_PRIVATE_PROPERTY_OFFSET \
+#define SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_14_PRIVATE_PROPERTY_OFFSET \
 	FORCEINLINE static uint32 __PPO__CameraBoomComp() { return STRUCT_OFFSET(ASCharacter, CameraBoomComp); } \
 	FORCEINLINE static uint32 __PPO__CameraComp() { return STRUCT_OFFSET(ASCharacter, CameraComp); }
 
 
-#define SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_9_PROLOG \
-	SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_12_EVENT_PARMS
+#define SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_11_PROLOG \
+	SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_14_EVENT_PARMS
 
 
-#define SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_12_GENERATED_BODY_LEGACY \
+#define SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_14_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_12_PRIVATE_PROPERTY_OFFSET \
-	SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_12_RPC_WRAPPERS \
-	SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_12_CALLBACK_WRAPPERS \
-	SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_12_INCLASS \
-	SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_12_STANDARD_CONSTRUCTORS \
+	SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_14_PRIVATE_PROPERTY_OFFSET \
+	SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_14_RPC_WRAPPERS \
+	SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_14_CALLBACK_WRAPPERS \
+	SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_14_INCLASS \
+	SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_14_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_12_GENERATED_BODY \
+#define SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_14_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_12_PRIVATE_PROPERTY_OFFSET \
-	SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_12_RPC_WRAPPERS_NO_PURE_DECLS \
-	SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_12_CALLBACK_WRAPPERS \
-	SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_12_INCLASS_NO_PURE_DECLS \
-	SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_12_ENHANCED_CONSTRUCTORS \
+	SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_14_PRIVATE_PROPERTY_OFFSET \
+	SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
+	SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_14_CALLBACK_WRAPPERS \
+	SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_14_INCLASS_NO_PURE_DECLS \
+	SurvivalGame_Source_SurvivalGame_Public_Player_SCharacter_h_14_ENHANCED_CONSTRUCTORS \
 static_assert(false, "Unknown access specifier for GENERATED_BODY() macro in class SCharacter."); \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
