@@ -147,7 +147,9 @@ void ASWeapon::OnUnEquip()
     
     if (bPendingEquip)
     {
-        
+        StopWeaponAnimation(EquipAnim);
+        bPendingEquip = false;
+        GetWorldTimerManager().ClearTimer(EquipFinishedTimerHandle);
     }
     
 }
