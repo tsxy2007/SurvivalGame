@@ -130,6 +130,10 @@ void ASCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
     //Equip
     PlayerInputComponent->BindAction("NextWeapon",IE_Pressed , this,&ASCharacter::OnNextWeapon);
     PlayerInputComponent->BindAction("PrevWeapon",IE_Pressed , this,&ASCharacter::OnPrevWeapon);
+    
+    //Fire
+    PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &ASCharacter::OnStartFire);
+    PlayerInputComponent->BindAction("Fire", IE_Released, this, &ASCharacter::OnStopFire);
 }
 
 void ASCharacter::PostInitializeComponents()
@@ -570,4 +574,14 @@ void ASCharacter::SwapToNewWeaponMesh()
     {
         CurrentWeapon->AttachMeshToPawn(EInventorySlot::Hands);
     }
+}
+
+void ASCharacter::OnStartFire()
+{
+    int a = 0 ;
+}
+
+void ASCharacter::OnStopFire()
+{
+    int b = 0 ;
 }
