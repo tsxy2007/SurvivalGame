@@ -32,6 +32,9 @@ ASWeapon::ASWeapon(const class FObjectInitializer& ObjectInitializer) : Super(Ob
     
     
     NoEquipAnimDuration = 0.5f;
+    bWantsToFire = false;
+    
+    CurrentState = EWeaponState::Idle;
 }
 
 // Called when the game starts or when spawned
@@ -51,7 +54,7 @@ void ASWeapon::Tick(float DeltaTime)
 void ASWeapon::PostInitializeComponents()
 {
     Super::PostInitializeComponents();
-    
+    TimeBetweenShots = 60.0f / 700;
 }
 
 void ASWeapon::EndPlay(const EEndPlayReason::Type EndPlayReason)
@@ -92,6 +95,48 @@ void ASWeapon::AttachMeshToPawn(EInventorySlot Slot)
         StorageSlot = Slot;
         Mesh->AttachToComponent( PawnMesh , FAttachmentTransformRules::SnapToTargetNotIncludingScale, AttachPoint );
     }
+}
+
+void ASWeapon::SetWeaponState(EWeaponState WeaponState)
+{
+    EWeaponState PreviosState = CurrentState;
+    
+    // 前个状态是开火当前状态不是 关闭开火
+    if (PreviosState == EWeaponState::Firing && WeaponState != EWeaponState::Firing )
+    {
+        
+    }
+    CurrentState = WeaponState;
+    //前个状态不是开火，当前状态开火。 启动开火流程
+    if (PreviosState != EWeaponState::Firing && WeaponState == EWeaponState::Firing )
+    {
+        
+    }
+}
+
+EWeaponState ASWeapon::GetCurrentState()const
+{
+    return CurrentState;
+}
+
+void ASWeapon::DetermineWeaponState()
+{
+    EWeaponState NewState = EWeaponState::Idle;
+    
+    if (bIsEquipped)
+    {
+        
+        if ( bWantsToFire )
+        {
+            NewState = EWeaponState::Firing;
+        }
+        
+    }
+    else if( bPendingEquip )
+    {
+        NewState = EWeaponState::Equipping;
+    }
+    SetWeaponState( NewState );
 }
 
 void ASWeapon::DetachMeshFromPawn()
@@ -215,4 +260,36 @@ void ASWeapon::StopWeaponAnimation(UAnimMontage* Animation)
             MyPawn->StopAnimMontage(Animation);
         }
     }
+}
+
+void ASWeapon::StartFire()
+{
+    
+    if ( !bWantsToFire )
+    {
+        bWantsToFire = true;
+        DetermineWeaponState();
+    }
+}
+
+void ASWeapon::HandleFiring()
+{
+    
+}
+
+void ASWeapon::OnBurstStarted()
+{
+    const float GameTime = GetWorld()->GetTimeSeconds();
+    
+    if (LastFireTime > 0 && TimeBetweenShots > 0 &&
+        LastFireTime + TimeBetweenShots > GameTime)
+    {
+        
+    }
+    
+    else
+    {
+        
+    }
+    HandleFiring();
 }

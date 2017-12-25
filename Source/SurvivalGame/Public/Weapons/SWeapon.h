@@ -96,6 +96,15 @@ public:
 
     void AttachMeshToPawn( EInventorySlot Slot = EInventorySlot::Hands );
     
+    void SetWeaponState(EWeaponState WeaponState);
+    
+    EWeaponState GetCurrentState() const;
+    
+    void DetermineWeaponState();
+    
+private:
+    EWeaponState    CurrentState;
+    
     /*
      Simulation & fx
      */
@@ -106,4 +115,22 @@ private:
 protected:
     float PlayWeaponAnimation(UAnimMontage* Animation , float InPlayRate = 1.f , FName StartSectionName = NAME_None);
     void StopWeaponAnimation(UAnimMontage* Animation);
+    
+    
+    /*
+     Fire & Damage Handling
+     */
+public:
+    void StartFire();
+    
+    virtual void HandleFiring();
+    
+    void OnBurstStarted();
+    
+private:
+    bool bWantsToFire;
+    
+    float LastFireTime;
+    
+    float TimeBetweenShots;
 };
