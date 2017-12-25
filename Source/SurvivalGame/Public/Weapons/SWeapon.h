@@ -112,6 +112,9 @@ private:
 	UPROPERTY(EditDefaultsOnly)
     UAnimMontage* EquipAnim;
     
+    UPROPERTY(EditDefaultsOnly)
+    UAnimMontage* FireAnim;
+    
 protected:
     float PlayWeaponAnimation(UAnimMontage* Animation , float InPlayRate = 1.f , FName StartSectionName = NAME_None);
     void StopWeaponAnimation(UAnimMontage* Animation);
@@ -127,10 +130,18 @@ public:
     
     void OnBurstStarted();
     
+    virtual void SimulateWeaponFire();
+    
+    virtual void FireWeapon();
+    
 private:
     bool bWantsToFire;
     
     float LastFireTime;
     
     float TimeBetweenShots;
+    
+    FTimerHandle TimerHandle_HandleFiring;
+    
+    
 };

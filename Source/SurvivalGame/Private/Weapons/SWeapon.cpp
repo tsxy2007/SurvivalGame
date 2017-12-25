@@ -274,7 +274,18 @@ void ASWeapon::StartFire()
 
 void ASWeapon::HandleFiring()
 {
+    SimulateWeaponFire();
+    FireWeapon();
+}
+
+void ASWeapon::FireWeapon()
+{
     
+}
+
+void ASWeapon::SimulateWeaponFire()
+{
+    PlayWeaponAnimation(FireAnim);
 }
 
 void ASWeapon::OnBurstStarted()
@@ -284,7 +295,7 @@ void ASWeapon::OnBurstStarted()
     if (LastFireTime > 0 && TimeBetweenShots > 0 &&
         LastFireTime + TimeBetweenShots > GameTime)
     {
-        
+        GetWorldTimerManager().SetTimer(TimerHandle_HandleFiring,this,&ASWeapon::HandleFiring,LastFireTime + TimeBetweenShots - GameTime , false);
     }
     else
     {

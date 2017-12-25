@@ -155,6 +155,7 @@ static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_EWeaponState(EWeaponStat
 				OuterClass->LinkChild(Z_Construct_UFunction_ASWeapon_GetWeaponMesh());
 				OuterClass->LinkChild(Z_Construct_UFunction_ASWeapon_OnRep_MyPawn());
 
+				UProperty* NewProp_FireAnim = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("FireAnim"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(FireAnim, ASWeapon), 0x0040000000010001, Z_Construct_UClass_UAnimMontage_NoRegister());
 				UProperty* NewProp_EquipAnim = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("EquipAnim"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(EquipAnim, ASWeapon), 0x0040000000010001, Z_Construct_UClass_UAnimMontage_NoRegister());
 				UProperty* NewProp_StorageSlot = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("StorageSlot"), RF_Public|RF_Transient|RF_MarkAsNative) UEnumProperty(CPP_PROPERTY_BASE(StorageSlot, ASWeapon), 0x0020080000010001, Z_Construct_UEnum_SurvivalGame_EInventorySlot());
 				UProperty* NewProp_StorageSlot_Underlying = new(EC_InternalUseOnlyConstructor, NewProp_StorageSlot, TEXT("UnderlyingType"), RF_Public|RF_Transient|RF_MarkAsNative) UByteProperty(FObjectInitializer(), EC_CppProperty, 0, 0x0000000000000000);
@@ -175,6 +176,8 @@ static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_EWeaponState(EWeaponStat
 				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("Weapons/SWeapon.h"));
 				MetaData->SetValue(OuterClass, TEXT("IsBlueprintBase"), TEXT("true"));
 				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("Public/Weapons/SWeapon.h"));
+				MetaData->SetValue(NewProp_FireAnim, TEXT("Category"), TEXT("SWeapon"));
+				MetaData->SetValue(NewProp_FireAnim, TEXT("ModuleRelativePath"), TEXT("Public/Weapons/SWeapon.h"));
 				MetaData->SetValue(NewProp_EquipAnim, TEXT("Category"), TEXT("SWeapon"));
 				MetaData->SetValue(NewProp_EquipAnim, TEXT("ModuleRelativePath"), TEXT("Public/Weapons/SWeapon.h"));
 				MetaData->SetValue(NewProp_StorageSlot, TEXT("Category"), TEXT("Weapon"));
@@ -194,7 +197,7 @@ static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_EWeaponState(EWeaponStat
 		check(OuterClass->GetClass());
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(ASWeapon, 3504499806);
+	IMPLEMENT_CLASS(ASWeapon, 1238973310);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_ASWeapon(Z_Construct_UClass_ASWeapon, &ASWeapon::StaticClass, TEXT("/Script/SurvivalGame"), TEXT("ASWeapon"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(ASWeapon);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
