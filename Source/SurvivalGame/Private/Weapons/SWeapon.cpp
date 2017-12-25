@@ -286,10 +286,9 @@ void ASWeapon::OnBurstStarted()
     {
         
     }
-    
     else
     {
-        
+        HandleFiring();
     }
-    HandleFiring();
+    
 }
