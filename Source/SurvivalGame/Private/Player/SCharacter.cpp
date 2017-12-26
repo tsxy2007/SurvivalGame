@@ -578,7 +578,11 @@ void ASCharacter::SwapToNewWeaponMesh()
 
 void ASCharacter::OnStartFire()
 {
-    int a = 0 ;
+    if (IsSprinting())
+    {
+        SetSprinting(false);
+    }
+    
 }
 
 void ASCharacter::OnStopFire()
