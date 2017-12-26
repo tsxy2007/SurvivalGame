@@ -63,7 +63,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "&quot;/Users/fengkai/Unreal Projects/SurvivalGame/SurvivalGame.uproject&quot;"
+            argument = "&quot;/Users/zhutongkuan/SurvivalGame/SurvivalGame.uproject&quot;"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument

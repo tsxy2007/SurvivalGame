@@ -224,4 +224,9 @@ public:
     
     UFUNCTION(BlueprintCallable , Category = "Animation")
     void SwapToNewWeaponMesh();
+    
+    // Fire
+    
+    void OnStartFire();
+    void OnStopFire();
 };
