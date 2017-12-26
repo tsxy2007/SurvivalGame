@@ -578,10 +578,38 @@ void ASCharacter::SwapToNewWeaponMesh()
 
 void ASCharacter::OnStartFire()
 {
-    int a = 0 ;
+    if (IsSprinting())
+    {
+        SetSprinting(false);
+    }
+    StartWeaponFire();
+}
+
+void ASCharacter::StartWeaponFire()
+{
+    if(!bWantsToFire)
+    {
+        bWantsToFire = true;
+        if (CurrentWeapon)
+        {
+            CurrentWeapon->StartFire();
+        }
+    }
 }
 
 void ASCharacter::OnStopFire()
 {
-    int b = 0 ;
+    StopWeaponFire();
+}
+
+void ASCharacter::StopWeaponFire()
+{
+    if(bWantsToFire)
+    {
+        bWantsToFire = false;
+        if(CurrentWeapon)
+        {
+            CurrentWeapon->StopFire();
+        }
+    }
 }

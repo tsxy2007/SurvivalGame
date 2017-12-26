@@ -123,7 +123,8 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(ASWeapon); \
 	FORCEINLINE static uint32 __PPO__WeaponPickupClass() { return STRUCT_OFFSET(ASWeapon, WeaponPickupClass); } \
 	FORCEINLINE static uint32 __PPO__StorageSlot() { return STRUCT_OFFSET(ASWeapon, StorageSlot); } \
 	FORCEINLINE static uint32 __PPO__EquipAnim() { return STRUCT_OFFSET(ASWeapon, EquipAnim); } \
-	FORCEINLINE static uint32 __PPO__FireAnim() { return STRUCT_OFFSET(ASWeapon, FireAnim); }
+	FORCEINLINE static uint32 __PPO__FireAnim() { return STRUCT_OFFSET(ASWeapon, FireAnim); } \
+	FORCEINLINE static uint32 __PPO__MuzzleAttachPoint() { return STRUCT_OFFSET(ASWeapon, MuzzleAttachPoint); }
 
 
 #define SurvivalGame_Source_SurvivalGame_Public_Weapons_SWeapon_h_19_PROLOG

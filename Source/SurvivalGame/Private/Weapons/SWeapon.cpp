@@ -2,6 +2,7 @@
 
 #include "SWeapon.h"
 #include "SCharacter.h"
+#include "SPlayerController.h"
 #include "SurvivalGame.h"
 
 
@@ -30,6 +31,7 @@ ASWeapon::ASWeapon(const class FObjectInitializer& ObjectInitializer) : Super(Ob
 	PrimaryActorTick.bCanEverTick = true;
     PrimaryActorTick.TickGroup = TG_PrePhysics;
     
+    MuzzleAttachPoint = TEXT("MuzzleFlashSocket");
     
     NoEquipAnimDuration = 0.5f;
     bWantsToFire = false;
@@ -68,6 +70,7 @@ void ASWeapon::SetOwningPawn(class ASCharacter *NewOwner)
     if (MyPawn != NewOwner)
     {
         MyPawn = NewOwner;
+        Instigator = NewOwner;
         SetOwner( NewOwner );
     }
 }
@@ -104,13 +107,13 @@ void ASWeapon::SetWeaponState(EWeaponState WeaponState)
     // 前个状态是开火当前状态不是 关闭开火
     if (PreviosState == EWeaponState::Firing && WeaponState != EWeaponState::Firing )
     {
-        
+        OnBurstStop();
     }
     CurrentState = WeaponState;
     //前个状态不是开火，当前状态开火。 启动开火流程
     if (PreviosState != EWeaponState::Firing && WeaponState == EWeaponState::Firing )
     {
-        
+        OnBurstStarted();
     }
 }
 
@@ -122,15 +125,13 @@ EWeaponState ASWeapon::GetCurrentState()const
 void ASWeapon::DetermineWeaponState()
 {
     EWeaponState NewState = EWeaponState::Idle;
-    
-    if (bIsEquipped)
+
+    if (IsEquipped())
     {
-        
-        if ( bWantsToFire )
+        if(bWantsToFire)
         {
             NewState = EWeaponState::Firing;
         }
-        
     }
     else if( bPendingEquip )
     {
@@ -272,10 +273,22 @@ void ASWeapon::StartFire()
     }
 }
 
+void ASWeapon::StopFire()
+{
+    if(bWantsToFire)
+    {
+        bWantsToFire = false;
+        DetermineWeaponState();
+    }
+}
+
 void ASWeapon::HandleFiring()
 {
     SimulateWeaponFire();
     FireWeapon();
+    
+    FTimerManager& TimerManager = GetWorldTimerManager();
+    TimerManager.SetTimer(TimerHandle_HandleFiring,this, &ASWeapon::HandleFiring, TimeBetweenShots, false);
 }
 
 void ASWeapon::FireWeapon()
@@ -302,4 +315,64 @@ void ASWeapon::OnBurstStarted()
         HandleFiring();
     }
     
+}
+
+void ASWeapon::OnBurstStop()
+{
+    GetWorldTimerManager().ClearTimer(TimerHandle_HandleFiring);
+}
+
+FVector ASWeapon::GetAdjustedAim() const
+{
+    FVector AimDir = FVector::ZeroVector;
+    
+    APlayerController* PlayerController = Instigator ? Cast<APlayerController>( Instigator->Controller ) : nullptr;
+    
+    if(PlayerController)
+    {
+        FVector CamLoc;
+        FRotator  CamRot;
+        PlayerController->GetPlayerViewPoint( CamLoc , CamRot );
+        AimDir = CamRot.Vector();
+    }
+    
+    return AimDir;
+}
+
+FVector ASWeapon::GetCameraDamageStartLocation(const FVector& AimDir) const
+{
+    FVector StartLocation = FVector::ZeroVector;
+    
+    ASPlayerController* PC = MyPawn ? Cast<ASPlayerController>( MyPawn->Controller ) : nullptr;
+    
+    if(PC)
+    {
+        FRotator DummyRot;
+        PC->GetPlayerViewPoint(StartLocation, DummyRot);
+        StartLocation = StartLocation + AimDir* ( FVector::DotProduct(Instigator->GetActorLocation() - StartLocation, AimDir) );
+    }
+    
+    
+    return StartLocation;
+}
+
+FHitResult ASWeapon::WeaponTrace(const FVector& TraceFrom , const FVector& TraceTo) const
+{
+    FCollisionQueryParams TraceParams(TEXT("WeaponTrace"),true , Instigator);
+    TraceParams.bTraceAsyncScene = true;
+    TraceParams.bReturnPhysicalMaterial = true;
+    FHitResult hit(ForceInit);
+    UWorld* World = GetWorld();
+    World->LineTraceSingleByChannel(hit, TraceFrom, TraceTo, COLLISION_WEAPON,TraceParams);
+    return hit;
+}
+
+FVector ASWeapon::GetMuzzleLocation() const
+{
+    return Mesh->GetSocketLocation(MuzzleAttachPoint);
+}
+
+FVector ASWeapon::GetMuzzleDirection() const
+{
+    return Mesh->GetSocketRotation(MuzzleAttachPoint).Vector();
 }

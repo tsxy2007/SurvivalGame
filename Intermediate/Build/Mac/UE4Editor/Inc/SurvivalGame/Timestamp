@@ -8,6 +8,7 @@
 /Users/zhutongkuan/SurvivalGame/Source/SurvivalGame/Public/Player/SPlayerController.h
 /Users/zhutongkuan/SurvivalGame/Source/SurvivalGame/Public/UI/SHUD.h
 /Users/zhutongkuan/SurvivalGame/Source/SurvivalGame/Public/Weapons/SWeapon.h
+/Users/zhutongkuan/SurvivalGame/Source/SurvivalGame/Public/Weapons/SWeaponInstant.h
 /Users/zhutongkuan/SurvivalGame/Source/SurvivalGame/Public/World/SGameMode.h
 /Users/zhutongkuan/SurvivalGame/Source/SurvivalGame/Public/STypes.h
 /Users/zhutongkuan/SurvivalGame/Source/SurvivalGame/SurvivalGameGameModeBase.h

@@ -5,3 +5,6 @@
 #include "CoreMinimal.h"
 #include "Engine.h"
 #include "Net/UnrealNetwork.h"
+
+
+#define COLLISION_WEAPON ECC_EngineTraceChannel1

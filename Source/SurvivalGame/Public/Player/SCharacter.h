@@ -226,7 +226,14 @@ public:
     void SwapToNewWeaponMesh();
     
     // Fire
-    
+private:
+    bool bWantsToFire;
+public:
     void OnStartFire();
+    
     void OnStopFire();
+    
+    void StartWeaponFire();
+    
+    void StopWeaponFire();
 };

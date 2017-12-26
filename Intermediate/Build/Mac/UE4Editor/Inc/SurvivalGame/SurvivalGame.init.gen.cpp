@@ -20,8 +20,8 @@ void EmptyLinkFunctionForGeneratedCodeSurvivalGame_init() {}
 			ReturnPackage = CastChecked<UPackage>(StaticFindObjectFast(UPackage::StaticClass(), nullptr, FName(TEXT("/Script/SurvivalGame")), false, false));
 			ReturnPackage->SetPackageFlags(PKG_CompiledIn | 0x00000000);
 			FGuid Guid;
-			Guid.A = 0xF3A89B2B;
-			Guid.B = 0x9CC51470;
+			Guid.A = 0x984EC292;
+			Guid.B = 0xBD2FBBEB;
 			Guid.C = 0x00000000;
 			Guid.D = 0x00000000;
 			ReturnPackage->SetGuid(Guid);

@@ -115,24 +115,42 @@ private:
     UPROPERTY(EditDefaultsOnly)
     UAnimMontage* FireAnim;
     
+    UPROPERTY(EditDefaultsOnly)
+    FName MuzzleAttachPoint;
+    
 protected:
     float PlayWeaponAnimation(UAnimMontage* Animation , float InPlayRate = 1.f , FName StartSectionName = NAME_None);
     void StopWeaponAnimation(UAnimMontage* Animation);
     
+    FVector GetMuzzleLocation()const;
     
+    FVector GetMuzzleDirection()const;
     /*
      Fire & Damage Handling
      */
 public:
     void StartFire();
     
+    void StopFire();
+    
     virtual void HandleFiring();
     
     void OnBurstStarted();
     
+    void OnBurstStop();
+    
     virtual void SimulateWeaponFire();
     
     virtual void FireWeapon();
+    
+    // 获取角色的摄像机法线
+    FVector GetAdjustedAim() const;
+    
+    //
+    FVector GetCameraDamageStartLocation(const FVector& AimDir)const;
+    
+    //检测碰撞物
+    FHitResult WeaponTrace(const FVector& TraceFrom , const FVector& TraceTo) const;
     
 private:
     bool bWantsToFire;
