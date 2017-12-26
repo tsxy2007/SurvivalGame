@@ -581,8 +581,7 @@ void ASCharacter::OnStartFire()
     if (IsSprinting())
     {
         SetSprinting(false);
-    }
-    StartWeaponFire();
+    }    StartWeaponFire();
 }
 
 void ASCharacter::StartWeaponFire()
